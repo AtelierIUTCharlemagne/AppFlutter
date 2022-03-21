@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+
 class User {
   String name;
   String mail;
@@ -8,19 +9,31 @@ class User {
 
   //Constructor
   User(this.name, this.mail, this.password) {
-    completed =false;
+    completed = false;
     lastConnected = DateTime.now();
   }
 
-  join(){
+  join() {
     completed = true;
   }
-  exist(){
+
+  exist() {
     return true;
   }
+
   @override
-  toString(){
+  toString() {
     return "Utilisateur : $name, mail : $mail, identified by : $password";
+  }
+
+  getTest() async {
+    print(toString());
+    try {
+      var response = await Dio().get('http://docketu.iutnc.univ-lorraine.fr:62349/');
+      print(response);
+    } catch (e) {
+      print(e);
+    }
   }
 
 
@@ -30,12 +43,11 @@ class User {
   register() async {
     print(toString());
     try {
-    var response = await Dio().get('http://www.google.com');
-    print(response);
-  } catch (e) {
-    print(e);
+      var response = await Dio()
+          .post('http://docketu.iutnc.univ-lorraine.fr:62349/users/signup', data: {'username': name, 'email': mail, 'passwd':password});
+      print(response);
+    } catch (e) {
+      print(e);
+    }
   }
-  }
-
-
 }

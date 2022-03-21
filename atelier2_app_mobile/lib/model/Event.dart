@@ -1,23 +1,28 @@
+import 'User.dart';
+
 class Event {
-  late int id; 
-  String content;
-  late bool completed;
-  late DateTime createdAt;
+  late int token; 
+  late String title;
+  late String address;
+  late String location;
+  late int authorId;
+  late DateTime dateEvent;
   late DateTime updatedAt;
 
   //Constructor
-  Event(this.content) {
-    id = 0;
-    completed =false;
-    createdAt = DateTime.now();
+  Event(this.title){
+    token = -1;
+    address = "Montcul";
+    location = "123456, 123456";
+    authorId = -1;
+    dateEvent = DateTime.now();
     updatedAt = DateTime.now();
+
   }
 
-  join(){
-    completed = true;
-  }
-  exist(){
-    return true;
+
+  join(User u1){
+    //TODO
   }
 
 

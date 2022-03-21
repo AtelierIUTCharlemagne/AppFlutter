@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(),
-        '/events': (context) => const MyEvents(),
+        '/events': (context) => MyEvents(events: EventsCollection().getList(),),
         '/event': (context) => const OneEvent(),
         '/register': (context) => const Register(),
         '/createEvent': (context) => const CreateEvent(),

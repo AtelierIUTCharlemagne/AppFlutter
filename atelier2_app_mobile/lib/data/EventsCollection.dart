@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:atelier2_app_mobile/model/Event.dart';
 // ignore: import_of_legacy_library_into_null_safe
@@ -11,8 +13,7 @@ class EventsCollection extends ChangeNotifier {
     Events = [];
     generateSampleEvents();
   }
-  void createEvent(String content) {
-    Event(content);
+  void createEvent() {
     notifyListeners();
   }
 
@@ -29,19 +30,14 @@ class EventsCollection extends ChangeNotifier {
     print("evt collectioon : removeEvent"); 
   }
 
-  void updateEventContent(Event Event, String newContent) {
-    Event.content = newContent;
-    Event.updatedAt = DateTime.now();
-
-    notifyListeners();
-  }
-
+  /*
   void setEventCompleted(Event Event) {
     //Event.complete();
     notifyListeners();
   }
-
+*/
   void generateSampleEvents() {
+    print('coucou');
     Events = List<Event>.generate(3, (index) => Event(faker.lorem.sentence()));
   }
 

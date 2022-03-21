@@ -35,33 +35,11 @@ class _EventPreviewState extends State<EventPreview> {
     }
     */
     return Consumer<EventsCollection>(builder: (context, events, child) {
-      return SizedBox(
-                  width: 360,
-                  height: 200,
-                  child:Scaffold(
-          //TODO test if we can remove app Bar here (necessary ?)
-          appBar: AppBar(
-            title: const Text('My events'),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  // do something
-                },
-              )
-            ],
-          ),
-          body: Center(
+      return  Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                SizedBox(
-                  width: 360,
-                  height: 200,
-                  child: ListTile(
+                  ListTile(
                     title: Text(widget.event.title),
                     subtitle: Text("Par : " +
                         widget.event.authorId.toString() +
@@ -72,13 +50,9 @@ class _EventPreviewState extends State<EventPreview> {
                       Navigator.pushNamed(context, '/event');
                     },
                   ),
-                )
-              ])),
-          floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/createEvent');
-              },
-              child: const Icon(Icons.add))));
+              ],
+              ),
+          );
     });
   }
 }

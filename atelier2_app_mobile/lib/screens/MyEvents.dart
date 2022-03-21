@@ -28,7 +28,12 @@ class _MyEventsState extends State<MyEvents> {
                   return EventPreview(event: event); 
                 },
               )
-            )
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/createEvent');
+              },
+              child: const Icon(Icons.add))
         );});
     }
   }

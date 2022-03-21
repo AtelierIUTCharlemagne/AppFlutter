@@ -1,8 +1,11 @@
+import 'package:atelier2_app_mobile/screens/CreateEvent.dart';
 import 'package:atelier2_app_mobile/screens/MyEvents.dart';
+import 'package:atelier2_app_mobile/screens/OneEvent.dart';
 import 'package:atelier2_app_mobile/screens/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'components/TabBar.dart';
 import 'data/EventsCollection.dart';
 
 void main() {
@@ -22,7 +25,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(),
         '/events': (context) => const MyEvents(),
+        '/event': (context) => const OneEvent(),
         '/register': (context) => const Register(),
+        '/createEvent': (context) => const CreateEvent(),
+        '/test': (context) => const MyTabbedPage(),
       },
       theme: ThemeData(
           // This is the theme of your application.
@@ -51,6 +57,7 @@ class MyHomePage extends StatelessWidget {
               )
             ],
       ),
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,11 +69,8 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          //onPressed: _incrementCounter,
-          onPressed: () {
-            Navigator.pushNamed(context, '/');
-      }),
+            
+     bottomNavigationBar: const MyTabbedPage(),
     );
   }
 }

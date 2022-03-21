@@ -16,7 +16,7 @@ class _MyEventsState extends State<MyEvents> {
       return Scaffold(
         //TODO test if we can remove app Bar here (necessary ?)
           appBar: AppBar(
-            title: const Text('Mes tâches'),
+            title: const Text('Mes évènements'),
             actions: <Widget>[
               IconButton(
                 icon: Icon(
@@ -33,7 +33,14 @@ class _MyEventsState extends State<MyEvents> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[],
-          )));
+          )),
+           
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/createEvent');
+          },  
+        child: const Icon(Icons.add)
+        ));
     });
   }
 }

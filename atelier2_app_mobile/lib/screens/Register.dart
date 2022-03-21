@@ -1,6 +1,9 @@
 import 'package:atelier2_app_mobile/data/EventsCollection.dart';
+import 'package:atelier2_app_mobile/model/User.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:validators/validators.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -123,6 +126,7 @@ class _RegisterState extends State<Register> {
                             if (_formKey.currentState!.validate()) {
                               // TODO regist user
                               Navigator.pushNamed(context, '/');
+                              User(_formKey, mail, password)
                             }
                           },
                           child: Text("Register"))

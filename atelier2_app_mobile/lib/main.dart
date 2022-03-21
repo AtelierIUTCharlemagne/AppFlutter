@@ -5,6 +5,7 @@ import 'package:atelier2_app_mobile/screens/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'components/MapComponent.dart';
 import 'components/TabBar.dart';
 import 'data/EventsCollection.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/event': (context) => const OneEvent(),
         '/register': (context) => const Register(),
         '/createEvent': (context) => const CreateEvent(),
+        '/map': (context) => const MapComponent(),
         '/test': (context) => const MyTabbedPage(),
       },
       theme: ThemeData(

@@ -19,10 +19,10 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
         Navigator.pushNamed(context, '/events');
         break;
       case 1:
-        Navigator.pushNamed(context, '/events');
+        Navigator.pushNamed(context, '/map');
         break;
       case 2:
-        Navigator.pushNamed(context, '/events');
+        Navigator.pushNamed(context, '/');
         break;
       default:
     }
@@ -37,12 +37,12 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
           label: 'My Events',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.camera),
-          label: 'Test',
+          icon: Icon(Icons.map_outlined),
+          label: 'Map',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.chat),
-          label: 'Test',
+          icon: Icon(Icons.visibility_outlined),
+          label: 'Nothing here',
         ),
       ],
       currentIndex: _selectedIndex, //New

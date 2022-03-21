@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:atelier2_app_mobile/data/EventsCollection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +23,7 @@ class _CreateEventState extends State<CreateEvent> {
     return Consumer<EventsCollection>(builder: (context, tasks, child) {
       return Scaffold(
           appBar: AppBar(
-            title: Text("Reunionous"),
+            title: const Text("Reunionous"),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(
@@ -114,7 +116,7 @@ class _CreateEventState extends State<CreateEvent> {
                               Navigator.pushNamed(context, '/');
                             }
                           },
-                          child: Text("Create"))
+                          child: const Text("Create"))
                     ]),
                     ),
                     )));

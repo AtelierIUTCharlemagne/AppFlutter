@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:atelier2_app_mobile/components/EventPreview.dart';
 import 'package:atelier2_app_mobile/data/EventsCollection.dart';
 import 'package:atelier2_app_mobile/model/Event.dart';

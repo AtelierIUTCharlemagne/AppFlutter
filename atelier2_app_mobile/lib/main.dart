@@ -44,10 +44,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reunionous"),
+        title: const Text("Reunionous"),
         actions: <Widget>[
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.account_circle_rounded,
                   color: Colors.white,
                 ),

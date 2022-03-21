@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:atelier2_app_mobile/data/EventsCollection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class _OneEventState extends State<OneEvent> {
       return Scaffold(
           //TODO test if we can remove app Bar here (necessary ?)
           appBar: AppBar(
-            title: Text("Reunionous"),
+            title: const Text("Reunionous"),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(

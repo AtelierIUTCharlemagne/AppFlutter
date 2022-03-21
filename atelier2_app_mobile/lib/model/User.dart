@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:dio/dio.dart';
 
 class User {
@@ -27,7 +29,6 @@ class User {
   }
 
   getTest() async {
-    print(toString());
     try {
       var response = await Dio().get('http://docketu.iutnc.univ-lorraine.fr:62349/');
       print(response);
@@ -37,11 +38,9 @@ class User {
   }
 
 
-  /**
-   * Call our api to register our user in db
-   */
+  /// Call our api to register our user in db
+  /// @phorcys-jules
   register() async {
-    print(toString());
     try {
       var response = await Dio()
           .post('http://docketu.iutnc.univ-lorraine.fr:62349/users/signup', data: {'username': name, 'email': mail, 'passwd':password});

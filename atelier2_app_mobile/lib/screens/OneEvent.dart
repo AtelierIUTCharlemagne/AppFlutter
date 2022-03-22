@@ -37,55 +37,48 @@ class _OneEventState extends State<OneEvent> {
               )
             ],
           ),
-          body: ListView(
-            children : [
-          //SingleChildScrollView(
-              SafeArea(
-                  child: GestureDetector(
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      child: Column(mainAxisSize: MainAxisSize.max, children: [
-                          Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * .35,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: Image.asset(
-                                      'assets/SampleMap.png',
-                                      fit: BoxFit.cover,
-                                      colorBlendMode: BlendMode.multiply,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 18)
-                                ],
+          body: SafeArea(
+              child: GestureDetector(
+                  onTap: () => FocusScope.of(context).unfocus(),
+                  child: Column(mainAxisSize: MainAxisSize.max, children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .35,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Image.asset(
+                                  'assets/SampleMap.png',
+                                  fit: BoxFit.cover,
+                                  colorBlendMode: BlendMode.multiply,
+                                ),
                               ),
-                            ),
-                            ListTile(
-                              title: Text(widget.event.title),
-                              leading: const Icon(Icons.location_pin),
-                            ),
-                            ListTile(
-                              title: Text(widget.event.address),
-                              leading: const Icon(Icons.location_pin),
-                            ),
-                            ListTile(
-                              title: Text(widget.event.location),
-                              leading: const Icon(Icons.location_pin),
-                            ),
-                            ListTile(
-                              title: Text("Organisateur : " +
-                                  widget.event.getOrganisateurName()),
-                              leading: const Icon(Icons.location_pin),
-                            ),
-                          ],
+                              const SizedBox(height: 18)
+                            ],
+                          ),
                         ),
-                        Expanded(child: AllComments(eventId: widget.event.id))
-                  ]
-                      //))
-                      ),))]));
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(widget.event.title),
+                        ),
+                        Text(widget.event.address),
+                        const SizedBox(
+                          height: 60,
+                          width: 100,
+                          child: Text("2 Routes de Paris"),
+                        ),
+                        SizedBox(
+                          height: 60,
+                          width: 100,
+                          child: Text(widget.event.address),
+                        ),
+                      ],
+                    ),
+                    Expanded(child: AllComments(eventId: widget.event.id))
+                  ]))));
     });
   }
 }

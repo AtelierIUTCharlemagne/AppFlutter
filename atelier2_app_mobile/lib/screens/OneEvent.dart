@@ -38,30 +38,69 @@ class _OneEventState extends State<OneEvent> {
             ],
           ),
           body: SafeArea(
-              child: SingleChildScrollView(
-                  //onTap: () => FocusScope.of(context).unfocus(),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * .35,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Image.asset(
+                                'assets/SampleMap.png',
+                                fit: BoxFit.cover,
+                                colorBlendMode: BlendMode.multiply,
+                              ),
+                            ),
+                            const SizedBox(height: 18),
+                          ])),
+                  ListTile(
+                    title: Text(widget.event.title),
+                    leading: const Icon(Icons.location_pin),
+                  ),
+                  ListTile(
+                    title: Text(widget.event.address),
+                    leading: const Icon(Icons.location_pin),
+                  ),
+                  ListTile(
+                    title: Text(widget.event.location),
+                    leading: const Icon(Icons.location_pin),
+                  ),
+                  ListTile(
+                    title: Text(
+                        "Organisateur : " + widget.event.getOrganisateurName()),
+                    leading: const Icon(Icons.location_pin),
+                  ),
+                  SizedBox(
+                    height: 400,
+                    child: Column(
+                      children: [Expanded(child: AllComments(eventId: widget.event.id))],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ));
+    });
+  }
+}
 
-                  child: Expanded(
-                      child: Column(mainAxisSize: MainAxisSize.max, children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
+/*
+          body: SafeArea(
+              child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .35,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Image.asset(
-                          'assets/SampleMap.png',
-                          fit: BoxFit.cover,
-                          colorBlendMode: BlendMode.multiply,
-                        ),
-                      ),
-                      const SizedBox(height: 18)
-                    ],
+                Expanded(
+                  child: Image.asset(
+                    'assets/SampleMap.png',
+                    fit: BoxFit.cover,
+                    colorBlendMode: BlendMode.multiply,
                   ),
                 ),
+                const SizedBox(height: 18),
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(widget.event.title),
@@ -79,8 +118,9 @@ class _OneEventState extends State<OneEvent> {
                 ),
               ],
             ),
-            Expanded(child: AllComments(eventId: widget.event.id))
-          ])))));
+            //Expanded(child: AllComments(eventId: widget.event.id))
+          )));
     });
   }
 }
+*/

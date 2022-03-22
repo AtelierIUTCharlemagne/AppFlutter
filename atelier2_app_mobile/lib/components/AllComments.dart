@@ -17,14 +17,17 @@ class _AllCommentsState extends State<AllComments> {
   Widget build(BuildContext context) {
     //Consumer de comment TODO
     List<Comment> commentsList = Comment.sampleComments();
-    return Row(children: <Widget>[
-      Expanded(
-          child: ListView.builder(
+    //return Row(children: <Widget>[
+      //Expanded(
+          //child: 
+          return ListView.builder(
+            primary: false,
+            physics: const NeverScrollableScrollPhysics(),
               itemCount: commentsList.length,
               itemBuilder: (context, index) {
                 final comment = commentsList[index];
                 return OneComment(comment: comment);
-              }))
-    ]);
+              }
+    );
   }
 }

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(),
         '/events': (context) => MyEvents(events: EventsCollection().getList(),),
-        '/event': (context) => OneEvent(event: Event("tmp"),),
+        '/event': (context) => OneEvent(event: Event("Soirée place Stan"),),
         '/register': (context) => const Register(),
         '/createEvent': (context) => const CreateEvent(),
         '/map': (context) => const MapComponent(),

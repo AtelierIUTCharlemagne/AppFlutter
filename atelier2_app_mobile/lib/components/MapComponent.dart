@@ -37,9 +37,7 @@ class _MapComponentState extends State<MapComponent> {
             height: 80.0,
             point: lt.LatLng(51.5, -0.09),
             builder: (ctx) =>
-            Container(
-              child: const Icon(Icons.location_pin, color: Colors.indigoAccent),
-            ),
+            const Icon(Icons.location_pin, color: Colors.indigoAccent),
           ),
         ],
       ),

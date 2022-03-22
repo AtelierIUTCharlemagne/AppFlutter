@@ -14,12 +14,16 @@ class Event {
   Event(this.title){
     id = -1;
     token = -1;
-    address = "Montcul";
+    address = "Nancy";
     location = "123456, 123456";
     authorId = -1;
     dateEvent = DateTime.now();
     updatedAt = DateTime.now();
 
+  }
+  ///TODO
+  getOrganisateurName(){
+    return "Jules";
   }
 
 

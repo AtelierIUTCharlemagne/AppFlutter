@@ -22,36 +22,42 @@ class _OneEventState extends State<OneEvent> {
 
     return Consumer<EventsCollection>(builder: (context, tasks, child) {
       return Scaffold(
-          //TODO test if we can remove app Bar here (necessary ?)
-          appBar: AppBar(
-            title: const Text("Reunionous"),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-              )
-            ],
-          ),
-          body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [],
+        //TODO test if we can remove app Bar here (necessary ?)
+        appBar: AppBar(
+          title: const Text("Reunionous"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.account_circle_rounded,
+                color: Colors.white,
               ),
-              Expanded(
-                child: AllComments(eventId: widget.event.id)
-              )
-            ])
-        )));
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+            )
+          ],
+        ),
+        body: Column(mainAxisSize: MainAxisSize.max,
+            //decoration: BoxDecoration(color: Colors.indigoAccent, image: DecorationImage(image : ImageProvider() Icons.location_pin)),
+            children: [
+              const SizedBox(
+                height: 60,
+                width: 100,
+                child: Text("2 Routes de Paris"),
+              ),
+              SizedBox(
+                height: 60,
+                width: 100,
+                child: AllComments(eventId: widget.event.id),
+              ),
+              
+              /*
+              SafeArea(
+                  child: GestureDetector(
+                      onTap: () => FocusScope.of(context).unfocus(),
+                      ))*/
+            ]),
+      );
     });
   }
 }

@@ -32,14 +32,12 @@ class _OneCommentState extends State<OneComment> {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(8, 12, 8, 12),
+            padding: const EdgeInsetsDirectional.fromSTEB(8, 12, 8, 12),
             child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 40,
-                    height: 40,
                     clipBehavior: Clip.antiAlias,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -51,7 +49,8 @@ class _OneCommentState extends State<OneComment> {
                   ),
                   Expanded(
                       child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,

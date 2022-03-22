@@ -20,6 +20,8 @@ class _AllCommentsState extends State<AllComments> {
     return Row(children: <Widget>[
       Expanded(
           child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
               itemCount: commentsList.length,
               itemBuilder: (context, index) {
                 final comment = commentsList[index];

@@ -16,26 +16,6 @@ class EventPreview extends StatefulWidget {
 class _EventPreviewState extends State<EventPreview> {
   @override
   Widget build(BuildContext context) {
-/*
-    Widget eventInfo() {
-      return Consumer<EventsCollection>(builder: (context, events, child) {
-        return Column(children: [
-          ListTile(
-            title: Text(widget.event.title),
-            subtitle: Text("Par : " +
-                widget.event.authorId.toString() +
-                "\n" +
-                "à " +
-                widget.event.address),
-            onTap: () {
-              Navigator.pushNamed(context, '/event');
-            },
-            
-          ),
-        ]);
-      });
-    }
-    */
     return Consumer<EventsCollection>(builder: (context, events, child) {
       return  Center(
               child: Column(

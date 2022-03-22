@@ -38,47 +38,49 @@ class _OneEventState extends State<OneEvent> {
             ],
           ),
           body: SafeArea(
-              child: GestureDetector(
-                  onTap: () => FocusScope.of(context).unfocus(),
-                  child: Column(mainAxisSize: MainAxisSize.max, children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .35,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Image.asset(
-                                  'assets/SampleMap.png',
-                                  fit: BoxFit.cover,
-                                  colorBlendMode: BlendMode.multiply,
-                                ),
-                              ),
-                              const SizedBox(height: 18)
-                            ],
-                          ),
+              child: SingleChildScrollView(
+                  //onTap: () => FocusScope.of(context).unfocus(),
+
+                  child: Expanded(
+                      child: Column(mainAxisSize: MainAxisSize.max, children: [
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .35,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          'assets/SampleMap.png',
+                          fit: BoxFit.cover,
+                          colorBlendMode: BlendMode.multiply,
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: Text(widget.event.title),
-                        ),
-                        Text(widget.event.address),
-                        const SizedBox(
-                          height: 60,
-                          width: 100,
-                          child: Text("2 Routes de Paris"),
-                        ),
-                        SizedBox(
-                          height: 60,
-                          width: 100,
-                          child: Text(widget.event.address),
-                        ),
-                      ],
-                    ),
-                    Expanded(child: AllComments(eventId: widget.event.id))
-                  ]))));
+                      ),
+                      const SizedBox(height: 18)
+                    ],
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(widget.event.title),
+                ),
+                Text(widget.event.address),
+                const SizedBox(
+                  height: 60,
+                  width: 100,
+                  child: Text("2 Routes de Paris"),
+                ),
+                SizedBox(
+                  height: 60,
+                  width: 100,
+                  child: Text(widget.event.address),
+                ),
+              ],
+            ),
+            Expanded(child: AllComments(eventId: widget.event.id))
+          ])))));
     });
   }
 }

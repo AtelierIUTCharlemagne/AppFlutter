@@ -45,7 +45,7 @@ class _RegisterState extends State<Register> {
                   //Form.of(primaryFocus!.context!)!.validate();
                 },
                 child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       //Nom

@@ -1,6 +1,7 @@
 import 'User.dart';
 
 class Event {
+  late int id; 
   late int token; 
   late String title;
   late String address;
@@ -11,6 +12,7 @@ class Event {
 
   //Constructor
   Event(this.title){
+    id = -1;
     token = -1;
     address = "Montcul";
     location = "123456, 123456";

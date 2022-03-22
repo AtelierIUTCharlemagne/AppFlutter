@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'components/MapComponent.dart';
 import 'components/TabBar.dart';
 import 'data/EventsCollection.dart';
+import 'model/Event.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(),
         '/events': (context) => MyEvents(events: EventsCollection().getList(),),
-        '/event': (context) => const OneEvent(),
+        '/event': (context) => OneEvent(event: Event("tmp"),),
         '/register': (context) => const Register(),
         '/createEvent': (context) => const CreateEvent(),
         '/map': (context) => const MapComponent(),

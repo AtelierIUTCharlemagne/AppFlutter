@@ -1,17 +1,24 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:atelier2_app_mobile/model/Event.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:faker/faker.dart';
 
+import 'package:http/http.dart' as http;
+
 //Liste des tâches pour le moment gènèré avec faker
 
 class EventsCollection extends ChangeNotifier {
   late List<Event> Events;
+  bool refreshed = false;
   EventsCollection() {
     Events = [];
-    generateSampleEvents();
+    //Events = getMyEvents();
+    //generateSampleEvents();
   }
   void createEvent() {
     notifyListeners();
@@ -24,10 +31,32 @@ class EventsCollection extends ChangeNotifier {
           label: 'Oui',
           onPressed: () {
             Events.remove(Event);
-            notifyListeners(); 
+            notifyListeners();
           }),
     ));
-    print("evt collectioon : removeEvent"); 
+    print("evt collectioon : removeEvent");
+  }
+
+    factory EventsCollection.fromJson(Map<String, dynamic> json) {
+      EventsCollection e = EventsCollection();
+      //List<dynamic> events = json['events'];
+      
+      var i=0;
+        json['events'].forEach((item) {
+          e.Events.add(Event.fromJson(item));
+          print(i++);
+          //results.add(Result.fromJson(item));
+        }); 
+  /*
+      for (var event in json['events']) {
+        print(i++);
+        e.Events.add(Event.fromJson(jsonDecode(event)));
+      }
+      //e.Events = json['events'] as List<Event>;
+
+      */
+      print(e.Events);
+      return e;
   }
 
   /*
@@ -39,6 +68,19 @@ class EventsCollection extends ChangeNotifier {
   void generateSampleEvents() {
     print('coucou');
     Events = List<Event>.generate(3, (index) => Event(faker.lorem.sentence()));
+  }
+
+  getMyEvents() async {
+    final response = await http
+        .get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62345/events'));
+
+    if (response.statusCode == 200) {
+      Events =  EventsCollection.fromJson(jsonDecode(response.body)).Events;
+      //notifyListeners(); //Notify keep refreshing learn to debug this
+      return Event;
+    } else {
+      throw Exception('Failed to load events');
+    }
   }
 
   List<Event> getList() {

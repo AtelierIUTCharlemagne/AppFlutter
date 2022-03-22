@@ -16,17 +16,22 @@ class MyEvents extends StatefulWidget {
 }
 
 class _MyEventsState extends State<MyEvents> {
+    
+   
   @override
   Widget build(BuildContext context) {
+
     return Consumer<EventsCollection>(builder: (context, events, child){
+      //TODO remove this.events from constructor parameters because we redifine here :
+      events.getMyEvents();
       return Scaffold(
         appBar: AppBar(
           title: const Text('Mes tâches'),
         ),
         body: Center(
-          child: ListView.builder(itemCount : widget.events.length,
+          child: ListView.builder(itemCount : events.Events.length,
                 itemBuilder : (context, index) {
-                  final event = widget.events[index];
+                  final event = events.Events[index];
                   return EventPreview(event: event); 
                 },
               )

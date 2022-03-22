@@ -16,7 +16,7 @@ class Comment {
   }
 
   static sampleComments(){
-    return List<Comment>.generate(3, (index) => Comment(faker.lorem.sentence(), faker.lorem.word()));
+    return List<Comment>.generate(10, (index) => Comment(faker.lorem.sentence(), faker.lorem.word()));
   }
 
 }

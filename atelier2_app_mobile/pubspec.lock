@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  color:
+    dependency: transitive
+    description:
+      name: color
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
   console_log_handler:
     dependency: transitive
     description:
@@ -270,6 +277,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.11.4"
+  mapbox_search:
+    dependency: transitive
+    description:
+      name: mapbox_search
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0+1"
+  mapbox_search_flutter:
+    dependency: "direct main"
+    description:
+      name: mapbox_search_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.6+1"
   matcher:
     dependency: transitive
     description:

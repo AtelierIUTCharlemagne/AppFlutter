@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import 'User.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -77,5 +79,18 @@ class Event {
   join(User u1){
   }
 
+  /// Call our api to create the event in db
+  /// TODO set author id
+  /// @phorcys-jules
+  createEvent() async {
+    print('saving event....');
+    try {
+      var response = await Dio()
+          .post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create', data: {'title': title, 'address': address, 'localisation':location, 'user_id_user': 1});
+      print(response);
+    } catch (e) {
+      print(e);
+    }
+  }
 
 }

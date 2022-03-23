@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/events': (context) => MyEvents(events: EventsCollection().getList(),),
         '/event': (context) => OneEvent(event: Event("Soirée place Stan"),),
         '/register': (context) => const Register(),
-        '/createEvent': (context) => const CreateEvent(),
+        '/createEvent': (context) => CreateEvent(),
         '/map': (context) => const MapComponent(events: []),
         '/test': (context) => const MyTabbedPage(),
       },

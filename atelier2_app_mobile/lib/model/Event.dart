@@ -32,7 +32,7 @@ class Event {
     id = -1;
     token = "-1";
     address = "Nancy";
-    location = "123456, 123456";
+    location = "42.9407051776, 147.9463177216";
     authorId = -1;
     dateEvent = DateTime.now();
     updatedAt = DateTime.now();
@@ -41,10 +41,7 @@ class Event {
 
   factory Event.fromJson(Map<String, dynamic> json) {
     Event e = Event(json['title']);
-
-
-    
-    //e.id = json['id_events'];
+    e.id = json['id_events'];
     e.address = json['address'];
     e.location = json['localisation'];
     e.token = json['token'];
@@ -54,6 +51,20 @@ class Event {
     return e;
   }
 
+  double getLat(){
+    print("loc : "+ location);
+    int endIndex = location.indexOf(",");
+    String sx = location.substring(0,  endIndex);
+    print("sx : "+sx);
+    return double.parse(sx);
+  }
+
+  double getLong(){
+    int startIndex = location.indexOf(", ");
+    String sy = location.substring(startIndex+2,  location.length);
+    print("sy : "+sy);
+    return double.parse(sy);
+  }
 
 
   ///TODO
@@ -62,8 +73,8 @@ class Event {
   }
 
 
+  //TODO ajouter user à un èvent
   join(User u1){
-    //TODO
   }
 
 

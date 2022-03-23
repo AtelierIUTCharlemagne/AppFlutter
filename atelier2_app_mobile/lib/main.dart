@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TodoList',
+      title: 'ReunioNous',
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(),
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         '/event': (context) => OneEvent(event: Event("Soirée place Stan"),),
         '/register': (context) => const Register(),
         '/createEvent': (context) => const CreateEvent(),
-        '/map': (context) => const MapComponent(),
+        '/map': (context) => const MapComponent(events: []),
         '/test': (context) => const MyTabbedPage(),
       },
       theme: ThemeData(

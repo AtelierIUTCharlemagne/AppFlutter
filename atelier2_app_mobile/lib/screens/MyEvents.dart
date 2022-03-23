@@ -26,7 +26,7 @@ class _MyEventsState extends State<MyEvents> {
       events.getMyEvents();
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Mes tâches'),
+          title: const Text('Mes évènements'),
         ),
         body: Center(
           child: ListView.builder(itemCount : events.Events.length,

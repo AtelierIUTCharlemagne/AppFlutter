@@ -20,7 +20,7 @@ class _CreateEventState extends State<CreateEvent> {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
 
-    return Consumer<EventsCollection>(builder: (context, tasks, child) {
+    return Consumer<EventsCollection>(builder: (context, events, child) {
       return Scaffold(
           appBar: AppBar(
             title: const Text("Reunionous"),

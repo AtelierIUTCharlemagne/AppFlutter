@@ -32,7 +32,7 @@ class _OneCommentState extends State<OneComment> {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(8, 12, 8, 12),
+            padding: const EdgeInsetsDirectional.fromSTEB(8, 12, 8, 12),
             child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,

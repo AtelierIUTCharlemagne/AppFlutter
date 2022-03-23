@@ -37,26 +37,14 @@ class EventsCollection extends ChangeNotifier {
     print("evt collectioon : removeEvent");
   }
 
-    factory EventsCollection.fromJson(Map<String, dynamic> json) {
-      EventsCollection e = EventsCollection();
-      //List<dynamic> events = json['events'];
-      
-      var i=0;
-        json['events'].forEach((item) {
-          e.Events.add(Event.fromJson(item));
-          print(i++);
-          //results.add(Result.fromJson(item));
-        }); 
-  /*
-      for (var event in json['events']) {
-        print(i++);
-        e.Events.add(Event.fromJson(jsonDecode(event)));
-      }
-      //e.Events = json['events'] as List<Event>;
-
-      */
-      print(e.Events);
-      return e;
+  ///Turn a JSON collection of events to an Events List
+  ///@return EventsCollection
+  factory EventsCollection.fromJson(Map<String, dynamic> json) {
+    EventsCollection e = EventsCollection();
+    json['events'].forEach((item) {
+      e.Events.add(Event.fromJson(item));
+    });
+    return e;
   }
 
   /*
@@ -75,8 +63,8 @@ class EventsCollection extends ChangeNotifier {
         .get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62345/events'));
 
     if (response.statusCode == 200) {
-      Events =  EventsCollection.fromJson(jsonDecode(response.body)).Events;
-      //notifyListeners(); //Notify keep refreshing learn to debug this
+      Events = EventsCollection.fromJson(jsonDecode(response.body)).Events;
+      notifyListeners(); //Notify keep refreshing learn to debug this
       return Event;
     } else {
       throw Exception('Failed to load events');

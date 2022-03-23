@@ -86,7 +86,9 @@ class Event {
     print('saving event....');
     try {
       var response = await Dio()
-          .post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create', data: {'title': title, 'address': address, 'localisation':location, 'user_id_user': 1});
+          //true data
+          //.post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create', data: {'title': title, 'address': address, 'localisation':location,'date_events': dateEvent.toString(), 'user_id_user': 1});
+          .post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create', data: {'title': "play together", 'address': "ici", 'localisation':"48.2 6.2",'date_events': "2022-12-12 00:00:00", 'user_id_user': 1});
       print(response);
     } catch (e) {
       print(e);

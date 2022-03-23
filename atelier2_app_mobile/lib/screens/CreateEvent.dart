@@ -96,14 +96,14 @@ class _CreateEventState extends State<CreateEvent> {
                       //Adress
                       Expanded(
                           child: MapBoxPlaceSearchWidget(
-                        popOnSelect: true,
+                        popOnSelect: false,
                         //popOnSelect: false,
                         apiKey: mapBoxApiKey,
                         //limit: 10,
                         searchHint: 'Where is the event ?',
                         onSelected: (place) {
-                          //print("ici : "+place.toString());
-                          //print("center :: "+ place.center.toString());
+                          print("ici : "+place.toString());
+                          print("center :: "+ place.center.toString());
                           evt.address = place.toString();
                           evt.location = place.center[0].toString() +
                               ", " +
@@ -116,7 +116,8 @@ class _CreateEventState extends State<CreateEvent> {
                           onPressed: () {
                             if (widget.formKey.currentState!.validate()) {
                               // TODO message confirmation ?
-                              Navigator.pushNamed(context, '/');
+                              evt.createEvent();
+                              //Navigator.pushNamed(context, '/');
                             }
                           },
                           child: const Text("Create"))

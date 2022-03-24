@@ -1,3 +1,4 @@
+import 'package:atelier2_app_mobile/screens/Connect.dart';
 import 'package:atelier2_app_mobile/screens/CreateEvent.dart';
 import 'package:atelier2_app_mobile/screens/MyEvents.dart';
 import 'package:atelier2_app_mobile/screens/OneEvent.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/events': (context) => MyEvents(events: EventsCollection().getList(),),
         '/event': (context) => OneEvent(event: Event("Soirée place Stan"),),
         '/register': (context) => const Register(),
+        '/connect': (context) => const Connect(),
         '/createEvent': (context) => const CreateEvent(),
         '/map': (context) => const MapComponent(events: []),
         '/test': (context) => const MyTabbedPage(),

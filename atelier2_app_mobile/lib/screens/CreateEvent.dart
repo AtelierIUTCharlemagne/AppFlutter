@@ -12,26 +12,21 @@ import 'package:validators/validators.dart';
 class CreateEvent extends StatefulWidget {
   CreateEvent({Key? key}) : super(key: key);
 
-  late GlobalKey<FormState> formKey;
+  late GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   State<CreateEvent> createState() => _CreateEventState();
 }
 
 class _CreateEventState extends State<CreateEvent> {
-  bool isTitleValid(String password) => password.length >= 6;
+  bool isTitleValid(String password) => password.length >= 3;
   //bool isDateValid(DateTime date) => Limite ?
   String mapBoxApiKey =
       'pk.eyJ1IjoicGhvcmN5cy1qdWxlcyIsImEiOiJja3k4bnU5cjUwMWk5MnZsYmp1am5pem04In0.LTlGjtYT-0MdURTgGk9fDA';
 
-  @override
-  void initState() {
-    super.initState();
-    widget.formKey = GlobalKey<FormState>();
-  }
 
   @override
   Widget build(BuildContext context) {
-    Event evt = Event("");
+    Event evt = Event();
 
     return Scaffold(
         appBar: AppBar(
@@ -52,7 +47,7 @@ class _CreateEventState extends State<CreateEvent> {
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: FocusTraversalGroup(
               child: Form(
-                //autovalidateMode: AutovalidateMode.always,
+                autovalidateMode: AutovalidateMode.always,
                 key: widget.formKey,
                 onChanged: () {
                   Form.of(primaryFocus!.context!)!.save();
@@ -69,14 +64,23 @@ class _CreateEventState extends State<CreateEvent> {
                           hintText: 'What you\'re planning to do ?',
                           labelText: 'Title *',
                         ),
+                        /*
                         validator: (String? value) {
-                          return (value != null &&
-                                  value == "" &&
-                                  value.contains('@'))
-                              ? 'Do not use the @ char.'
+                          return (!isTitleValid(value!))
+                              ? 'This is not a valid title'
                               : null;
                         },
-                        onSaved: (String? value) => evt.title = value!,
+                        */
+                        onSaved: (String? value) {
+                          //String tmp = value!;
+                          //String tmp2 = tmp;
+                          //evt.setTitle(value);
+                          evt.title = value!;
+                          //print("title " + value!);
+                          //evt.title = value;
+                          print(" evt.title " + evt.title);
+                        },
+                        //onSaved: (String? value) => evt.title = value!,
                       ),
                       DateTimeFormField(
                         decoration: const InputDecoration(
@@ -88,7 +92,7 @@ class _CreateEventState extends State<CreateEvent> {
                             ? 'This is not a valid date for an event'
                             : null,
                         onSaved: (DateTime? value) {
-                          print(value.toString());
+                          //print("date : "+value.toString());
                           evt.dateEvent = value!;
                         },
                       ),
@@ -102,8 +106,8 @@ class _CreateEventState extends State<CreateEvent> {
                         //limit: 10,
                         searchHint: 'Where is the event ?',
                         onSelected: (place) {
-                          print("ici : "+place.toString());
-                          print("center :: "+ place.center.toString());
+                          print("ici : " + place.toString());
+                          print("center :: " + place.center.toString());
                           evt.address = place.toString();
                           evt.location = place.center[0].toString() +
                               ", " +

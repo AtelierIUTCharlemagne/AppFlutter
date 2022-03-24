@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 import 'User.dart';
@@ -28,7 +30,8 @@ class Event {
   @JsonKey(name: 'token')
 
   //Constructor
-  Event(this.title) {
+  Event() {
+    title = "titre";
     id = -1;
     token = "-1";
     address = "Nancy";
@@ -39,7 +42,8 @@ class Event {
   }
 
   factory Event.fromJson(Map<String, dynamic> json) {
-    Event e = Event(json['title']);
+    Event e = Event();
+    e.title = json['title'];
     e.id = json['id_events'];
     e.address = json['address'];
     e.location = json['localisation'];
@@ -50,6 +54,9 @@ class Event {
     return e;
   }
 
+  setTitle(String newTitle){
+    title = newTitle;
+  }
   double getLat() {
     print("loc : " + location);
     int endIndex = location.indexOf(",");
@@ -77,22 +84,29 @@ class Event {
   /// TODO set author id
   /// @phorcys-jules
   createEvent() async {
-    print('saving event....');
+    print('saving event....'+ title+ address+ location);
     try {
       var response = await Dio()
           //true data
-          //.post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create', data: {'title': title, 'address': address, 'localisation':location,'date_events': dateEvent.toString(), 'user_id_user': 1});
           .post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create',
               data: {
-            'title': "play together",
-            'address': "ici",
-            'localisation': "48.2 6.2",
-            'date_events': "2022-12-12 00:00:00",
-            'user_id_user': 1
+            'title': title,
+            'address': address,
+            'localisation': location,
+            'date_events': dateEvent.toString(),
+            'user_id_user': 6
           });
       print(response);
-    } catch (e) {
-      print(e);
+    } on DioError catch (e) {
+      if (e.error.toString() == "Http status error [500]") {
+        print("Les champs ne sont pas conformes");
+      } else {
+        if (e.error is SocketException) {
+          print("Proxy error, use eduroam");
+        } else {
+          print(e);
+        }
+      }
     }
   }
-} 
+}

@@ -11,23 +11,14 @@ import 'package:json_annotation/json_annotation.dart';
 //TODO test if we can remove @JsonKey(name: 'id_events')
 //when the name is the name
 class Event {
-  @JsonKey(name: 'id_events')
   late int id;
-  @JsonKey(name: 'token')
   late String token;
-  @JsonKey(name: 'title')
   late String title;
-  @JsonKey(name: 'address')
   late String address;
-  @JsonKey(name: 'localisation')
   late String location;
-  @JsonKey(name: 'user_id_user')
   late int authorId;
-  @JsonKey(name: 'date_events')
   late DateTime dateEvent;
-  @JsonKey(name: 'last_update')
   late DateTime updatedAt;
-  @JsonKey(name: 'token')
 
   //Constructor
   Event() {
@@ -37,7 +28,7 @@ class Event {
     address = "Nancy";
     location = "42.9407051776, 147.9463177216";
     authorId = -1;
-    dateEvent = DateTime.now();
+    dateEvent = DateTime.utc(1960);//DateTime.parse(DateTime.utc(1960).toString());
     updatedAt = DateTime.now();
   }
 
@@ -76,6 +67,20 @@ class Event {
   getOrganisateurName() {
     return "Jules";
   }
+  getTitle(){
+    print("return "+title);
+    return title;
+  }
+
+  @override
+  toString(){
+    return "'title': $title"+
+            "'address': $address,"+
+            "'localisation': $location,"+
+            "'date_events':  $dateEvent.toString().substring(0, dateEvent.toString().length-5)"+
+            "'user_id_user': $authorId"+
+            "";
+  }
 
   //TODO ajouter user à un èvent
   join(User u1) {}
@@ -84,7 +89,7 @@ class Event {
   /// TODO set author id
   /// @phorcys-jules
   createEvent() async {
-    print('saving event....'+ title+ address+ location);
+    print('saving event....'+ title+ address+ location+" "+ dateEvent.toString().substring(0, dateEvent.toString().length-5)+" "+updatedAt.toString());
     try {
       var response = await Dio()
           //true data
@@ -93,7 +98,7 @@ class Event {
             'title': title,
             'address': address,
             'localisation': location,
-            'date_events': dateEvent.toString(),
+            'date_events':  dateEvent.toString().substring(0, dateEvent.toString().length-5),
             'user_id_user': 6
           });
       print(response);

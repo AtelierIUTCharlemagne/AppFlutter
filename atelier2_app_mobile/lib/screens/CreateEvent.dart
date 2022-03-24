@@ -50,8 +50,11 @@ class _CreateEventState extends State<CreateEvent> {
                 autovalidateMode: AutovalidateMode.always,
                 key: widget.formKey,
                 onChanged: () {
-                  Form.of(primaryFocus!.context!)!.save();
-                  Form.of(primaryFocus!.context!)!.validate();
+                  try {
+                    Form.of(primaryFocus!.context!)!.save();
+                    Form.of(primaryFocus!.context!)!.validate();
+                  } catch (e) {}
+
                 },
                 child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -120,6 +123,7 @@ class _CreateEventState extends State<CreateEvent> {
                           onPressed: () {
                             if (widget.formKey.currentState!.validate()) {
                               // TODO message confirmation ?
+                              print("evt : "+ evt.toString());
                               evt.createEvent();
                               //Navigator.pushNamed(context, '/');
                             }

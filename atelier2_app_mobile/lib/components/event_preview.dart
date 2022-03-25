@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
-import 'package:atelier2_app_mobile/data/EventsCollection.dart';
-import 'package:atelier2_app_mobile/model/Event.dart';
-import 'package:atelier2_app_mobile/screens/OneEvent.dart';
+import 'package:atelier2_app_mobile/data/events_collection.dart';
+import 'package:atelier2_app_mobile/model/event.dart';
+import 'package:atelier2_app_mobile/screens/one_event.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +37,7 @@ class _EventPreviewState extends State<EventPreview> {
       });
     }
     */
-    return Consumer<EventsCollection>(builder: (context, events, child) {
+    return Consumer<eventsCollection>(builder: (context, events, child) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

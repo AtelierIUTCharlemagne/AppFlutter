@@ -1,4 +1,4 @@
-import 'User.dart';
+import 'user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 
@@ -52,17 +52,17 @@ class Event {
   }
 
   double getLat(){
-    print("loc : "+ location);
+    //print("loc : "+ location);
     int endIndex = location.indexOf(",");
     String sx = location.substring(0,  endIndex);
-    print("sx : "+sx);
+    //print("sx : "+sx);
     return double.parse(sx);
   }
 
   double getLong(){
     int startIndex = location.indexOf(", ");
     String sy = location.substring(startIndex+2,  location.length);
-    print("sy : "+sy);
+    //print("sy : "+sy);
     return double.parse(sy);
   }
 

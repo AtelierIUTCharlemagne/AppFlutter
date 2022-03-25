@@ -1,11 +1,7 @@
-// ignore: file_names
-import 'package:atelier2_app_mobile/components/AllComments.dart';
-import 'package:atelier2_app_mobile/components/MapComponent.dart';
-import 'package:atelier2_app_mobile/components/usefulWidget.dart';
-import 'package:atelier2_app_mobile/data/EventsCollection.dart';
-import 'package:atelier2_app_mobile/model/Event.dart';
+import 'package:atelier2_app_mobile/components/all_comments.dart';
+import 'package:atelier2_app_mobile/components/map_component.dart';
+import 'package:atelier2_app_mobile/model/event.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class OneEvent extends StatefulWidget {
   OneEvent({Key? key, required this.event}) : super(key: key);
@@ -18,8 +14,8 @@ class OneEvent extends StatefulWidget {
 class _OneEventState extends State<OneEvent> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double bottomPadding = MediaQuery.of(context).padding.bottom;
+    //double width = MediaQuery.of(context).size.width;
+    //double bottomPadding = MediaQuery.of(context).padding.bottom;
 
     List<Event> evtList = [];
     evtList.add(widget.event);
@@ -27,7 +23,7 @@ class _OneEventState extends State<OneEvent> {
     //TODO this keep refresh if it's a consumer.
     //Make a refresh function ?
     //print("je me refresh");
-    print("evt : " + evtList.toString());
+    //print("evt : " + evtList.toString());
     return Scaffold(
         //TODO test if we can remove app Bar here (necessary ?)
         appBar: AppBar(

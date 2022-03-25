@@ -1,10 +1,7 @@
 // ignore_for_file: file_names
-
-import 'package:atelier2_app_mobile/data/EventsCollection.dart';
-import 'package:atelier2_app_mobile/model/Event.dart';
+import 'package:atelier2_app_mobile/model/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:provider/provider.dart';
 import "package:latlong2/latlong.dart" as lt;
 
 // ignore: must_be_immutable

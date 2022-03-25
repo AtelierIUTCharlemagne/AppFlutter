@@ -1,19 +1,19 @@
-import 'package:atelier2_app_mobile/screens/Connect.dart';
-import 'package:atelier2_app_mobile/screens/CreateEvent.dart';
-import 'package:atelier2_app_mobile/screens/MyEvents.dart';
-import 'package:atelier2_app_mobile/screens/OneEvent.dart';
-import 'package:atelier2_app_mobile/screens/Register.dart';
+import 'package:atelier2_app_mobile/screens/connect.dart';
+import 'package:atelier2_app_mobile/screens/create_event.dart';
+import 'package:atelier2_app_mobile/screens/my_events.dart';
+import 'package:atelier2_app_mobile/screens/one_event.dart';
+import 'package:atelier2_app_mobile/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'components/MapComponent.dart';
-import 'components/TabBar.dart';
-import 'data/EventsCollection.dart';
-import 'model/Event.dart';
+import 'components/map_component.dart';
+import 'components/tab_bar.dart';
+import 'data/events_collection.dart';
+import 'model/event.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-    create: (context) => EventsCollection(),
+    create: (context) => eventsCollection(),
     child: const MyApp(),
   ));
 }
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(),
         '/events': (context) => MyEvents(
-              events: EventsCollection().getList(),
+              events: eventsCollection().getList(),
             ),
         '/event': (context) => OneEvent(
               event: Event("Soirée place Stan"),

@@ -1,8 +1,5 @@
-// ignore_for_file: file_names
-
 import 'dart:convert';
-
-import 'package:atelier2_app_mobile/data/CurrentUser.dart';
+import 'package:atelier2_app_mobile/data/current_user.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
@@ -40,15 +37,15 @@ class User {
     try {
       var response =
           await Dio().get('http://docketu.iutnc.univ-lorraine.fr:62349/');
-      print(response);
+      //print(response);
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 
   ///debug method
   howAreYou() {
-    print("Im fine thanks");
+    //print("Im fine thanks");
   }
 
   /// Call our api to register our user in db
@@ -58,32 +55,32 @@ class User {
       var response = await Dio().post(
           'http://docketu.iutnc.univ-lorraine.fr:62349/users/signup',
           data: {'username': name, 'email': mail, 'passwd': password});
-      print(response);
+      //print(response);
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 
   /// Call our api to connect our user
   /// @phorcys-jules
   connect(String mail, String password) async {
-    print("connection....");
+    //print("connection....");
     try {
       final response = await http.post(
           Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62349/users/signin'),
           body: {'email': mail, 'passwd': password});
-      print(response.statusCode);
+      //print(response.statusCode);
       if (response.statusCode == 200) {
         CurrentUser.fromJsonConnection(jsonDecode(response.body));
-        print(response.body);
-        print("the current user is now : " + CurrentUser.usr.toString());
+        //print(response.body);
+        //print("the current user is now : " + CurrentUser.usr.toString());
         return true;
       } else {
         return false;
         // Erreur de connexion, surement pas les bons id
       }
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 }

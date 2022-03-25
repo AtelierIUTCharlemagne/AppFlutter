@@ -1,10 +1,6 @@
 // ignore_for_file: file_names
-
-import 'package:atelier2_app_mobile/data/EventsCollection.dart';
-import 'package:atelier2_app_mobile/model/Comment.dart';
-import 'package:atelier2_app_mobile/model/Event.dart';
+import 'package:atelier2_app_mobile/model/comment.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class OneComment extends StatefulWidget {
   const OneComment({Key? key, required this.comment}) : super(key: key);
@@ -51,7 +47,8 @@ class _OneCommentState extends State<OneComment> {
                   ),
                   Expanded(
                       child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,

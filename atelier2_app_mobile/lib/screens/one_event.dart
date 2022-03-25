@@ -50,7 +50,7 @@ class _OneEventState extends State<OneEvent> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Expanded(child: MapComponent(events: evtList)),
+                          Expanded(child: MapComponent(event: widget.event)),
                           const SizedBox(height: 18),
                         ])),
                 ListTile(

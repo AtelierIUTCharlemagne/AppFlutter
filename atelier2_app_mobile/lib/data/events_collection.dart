@@ -12,10 +12,10 @@ import 'package:http/http.dart' as http;
 
 //Liste des tâches pour le moment gènèré avec faker
 
-class eventsCollection extends ChangeNotifier {
+class EventsCollection extends ChangeNotifier {
   late List<Event> Events;
   bool refreshed = false;
-  eventsCollection() {
+  EventsCollection() {
     Events = [];
     //Events = getMyEvents();
     //generateSampleEvents();
@@ -34,13 +34,13 @@ class eventsCollection extends ChangeNotifier {
             notifyListeners();
           }),
     ));
-    print("evt collectioon : removeEvent");
+    //print("evt collectioon : removeEvent");
   }
 
   ///Turn a JSON collection of events to an Events List
   ///@return EventsCollection
-  factory eventsCollection.fromJson(Map<String, dynamic> json) {
-    eventsCollection e = eventsCollection();
+  factory EventsCollection.fromJson(Map<String, dynamic> json) {
+    EventsCollection e = EventsCollection();
     json['events'].forEach((item) {
       e.Events.add(Event.fromJson(item));
     });
@@ -54,7 +54,7 @@ class eventsCollection extends ChangeNotifier {
   }
 */
   void generateSampleEvents() {
-    print('coucou');
+    //print('coucou');
     Events = List<Event>.generate(3, (index) => Event(faker.lorem.sentence()));
   }
 
@@ -64,7 +64,7 @@ class eventsCollection extends ChangeNotifier {
             user.id.toString()));
 
     if (response.statusCode == 200) {
-      Events = eventsCollection.fromJson(jsonDecode(response.body)).Events;
+      Events = EventsCollection.fromJson(jsonDecode(response.body)).Events;
       notifyListeners(); //Notify keep refreshing learn to debug this
       return Event;
     } else {

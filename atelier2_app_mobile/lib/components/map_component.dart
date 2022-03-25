@@ -24,7 +24,7 @@ class _MapComponentState extends State<MapComponent> {
       ///comprendre que la valeur n'est pas nul, cf if au dessus
       List<Event> tmp = widget.events;
       for (var event in tmp) {
-        print("ma boy");
+        //print("ma boy");
         mark.add(Marker(
           width: 80.0,
           height: 80.0,

@@ -13,7 +13,7 @@ import 'model/event.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-    create: (context) => eventsCollection(),
+    create: (context) => EventsCollection(),
     child: const MyApp(),
   ));
 }
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(),
         '/events': (context) => MyEvents(
-              events: eventsCollection().getList(),
+              events: EventsCollection().getList(),
             ),
         '/event': (context) => OneEvent(
               event: Event("Soirée place Stan"),

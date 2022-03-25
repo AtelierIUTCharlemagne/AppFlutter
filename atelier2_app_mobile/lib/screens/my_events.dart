@@ -19,7 +19,7 @@ class _MyEventsState extends State<MyEvents> {
   Widget build(BuildContext context) {
     //User user = CurrentUser.usr;
 
-    return Consumer<eventsCollection>(builder: (context, events, child) {
+    return Consumer<EventsCollection>(builder: (context, events, child) {
       //TODO remove this.events from constructor parameters because we redifine here :
 
       events.getMyEvents(CurrentUser.usr);

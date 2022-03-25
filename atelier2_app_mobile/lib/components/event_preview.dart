@@ -37,7 +37,7 @@ class _EventPreviewState extends State<EventPreview> {
       });
     }
     */
-    return Consumer<eventsCollection>(builder: (context, events, child) {
+    return Consumer<EventsCollection>(builder: (context, events, child) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

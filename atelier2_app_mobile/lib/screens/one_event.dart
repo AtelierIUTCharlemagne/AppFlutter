@@ -4,7 +4,7 @@ import 'package:atelier2_app_mobile/model/event.dart';
 import 'package:flutter/material.dart';
 
 class OneEvent extends StatefulWidget {
-  OneEvent({Key? key, required this.event}) : super(key: key);
+  const OneEvent({Key? key, required this.event}) : super(key: key);
 
   final Event event;
   @override

@@ -25,8 +25,7 @@ class User {
   }
 
   ///TODO
-  join() {
-  }
+  join() {}
 
   exist() {
     return true;
@@ -67,17 +66,22 @@ class User {
 
   /// Call our api to connect our user
   /// @phorcys-jules
-  connect() async {
+  connect(String mail, String password) async {
     print("connection....");
     try {
       final response = await http.post(
           Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62349/users/signin'),
-          body: {'email': "mail@mail.fr", 'passwd': "1234ab"});
-
-      CurrentUser.fromJsonConnection(jsonDecode(response.body));
-      print('e');
-      
-      print("the current user is now : "+ CurrentUser.usr.toString());
+          body: {'email': mail, 'passwd': password});
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        CurrentUser.fromJsonConnection(jsonDecode(response.body));
+        print(response.body);
+        print("the current user is now : " + CurrentUser.usr.toString());
+        return true;
+      } else {
+        return false;
+        // Erreur de connexion, surement pas les bons id
+      }
     } catch (e) {
       print(e);
     }

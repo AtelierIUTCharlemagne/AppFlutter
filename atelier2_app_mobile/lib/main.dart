@@ -24,11 +24,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ReunioNous',
-      initialRoute: '/',
+      initialRoute: '/connect',
       routes: {
         '/': (context) => const MyHomePage(),
-        '/events': (context) => MyEvents(events: EventsCollection().getList(),),
-        '/event': (context) => OneEvent(event: Event("Soirée place Stan"),),
+        '/events': (context) => MyEvents(
+              events: EventsCollection().getList(),
+            ),
+        '/event': (context) => OneEvent(
+              event: Event("Soirée place Stan"),
+            ),
         '/register': (context) => const Register(),
         '/connect': (context) => const Connect(),
         '/createEvent': (context) => const CreateEvent(),
@@ -49,20 +53,20 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Container(),
         title: const Text("Reunionous"),
         actions: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-              )
-            ],
+          IconButton(
+            icon: const Icon(
+              Icons.account_circle_rounded,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, '/register');
+            },
+          )
+        ],
       ),
-      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,8 +78,7 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-            
-     bottomNavigationBar: const MyTabbedPage(),
+      bottomNavigationBar: const MyTabbedPage(),
     );
   }
 }

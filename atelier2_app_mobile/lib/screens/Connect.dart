@@ -1,3 +1,4 @@
+import 'package:atelier2_app_mobile/main.dart';
 import 'package:atelier2_app_mobile/model/User.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -57,13 +58,16 @@ class _ConnectState extends State<Connect> {
                 ),
                 const Padding(padding: EdgeInsets.only(top: 15.0)),
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        print("mail : " + usr.mail + "pass " + usr.password);
+                        print("mail : " + usr.mail + " pass " + usr.password);
                         //usr.howAreYou();
-                        usr.connect();
-                        //Navigator.pushNamed(context, '/');
+                        if (await usr.connect(usr.mail, usr.password)) {
+                          Navigator.pushReplacementNamed(context, '/');
+                        } else {
+                          //Afficher mauvais identifiant
+                        }
                       }
                     },
                     child: const Text("Connect"))

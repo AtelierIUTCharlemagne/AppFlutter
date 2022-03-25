@@ -22,7 +22,7 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
         Navigator.pushNamed(context, '/map');
         break;
       case 2:
-        Navigator.pushNamed(context, '/');
+        Navigator.pushNamed(context, '/connect');
         break;
       default:
     }
@@ -42,7 +42,7 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.visibility_outlined),
-          label: 'Nothing here',
+          label: 'connect',
         ),
       ],
       currentIndex: _selectedIndex, //New

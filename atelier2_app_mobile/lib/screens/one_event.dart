@@ -13,12 +13,18 @@ class OneEvent extends StatefulWidget {
 
 class _OneEventState extends State<OneEvent> {
   @override
+  initState() {
+    super.initState();
+    getComments(widget.event);
+  }
+
+  @override
   Widget build(BuildContext context) {
     //double width = MediaQuery.of(context).size.width;
     //double bottomPadding = MediaQuery.of(context).padding.bottom;
 
-    List<Event> evtList = [];
-    evtList.add(widget.event);
+    /*List<Event> evtList = [];
+    evtList.add(widget.event);*/
     //return Consumer<EventsCollection>(builder: (context, events, child) {
     //TODO this keep refresh if it's a consumer.
     //Make a refresh function ?
@@ -83,6 +89,10 @@ class _OneEventState extends State<OneEvent> {
           ),
         ));
     //});
+  }
+
+  void getComments(Event event) {
+    String id = event.id.toString();
   }
 }
 

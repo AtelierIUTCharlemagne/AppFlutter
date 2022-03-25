@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const Register(),
         '/connect': (context) => const Connect(),
         '/createEvent': (context) => const CreateEvent(),
-        '/map': (context) => const MapComponent(events: []),
+        '/map': (context) => MapComponent(event: Event('')),
         '/test': (context) => const MyTabbedPage(),
       },
       theme: ThemeData(

@@ -1,6 +1,5 @@
 import 'package:atelier2_app_mobile/model/user.dart';
 import 'package:flutter/material.dart';
-
 import 'package:validators/validators.dart';
 
 class Register extends StatefulWidget {

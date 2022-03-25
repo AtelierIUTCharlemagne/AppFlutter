@@ -33,21 +33,6 @@ class User {
     return "Utilisateur : $name, mail : $mail, identified by : $password";
   }
 
-  getTest() async {
-    try {
-      var response =
-          await Dio().get('http://docketu.iutnc.univ-lorraine.fr:62349/');
-      //print(response);
-    } catch (e) {
-      //print(e);
-    }
-  }
-
-  ///debug method
-  howAreYou() {
-    //print("Im fine thanks");
-  }
-
   /// Call our api to register our user in db
   /// @phorcys-jules
   register() async {
@@ -55,6 +40,7 @@ class User {
       var response = await Dio().post(
           'http://docketu.iutnc.univ-lorraine.fr:62349/users/signup',
           data: {'username': name, 'email': mail, 'passwd': password});
+      return response;
       //print(response);
     } catch (e) {
       //print(e);

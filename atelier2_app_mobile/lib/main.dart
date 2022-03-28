@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
               events: EventsCollection().getList(),
             ),
         '/event': (context) => OneEvent(
-              event: Event("Soirée place Stan"),
+              event: Event(),
             ),
         '/register': (context) => const Register(),
         '/connect': (context) => const Connect(),
-        '/createEvent': (context) => const CreateEvent(),
+        '/createEvent': (context) => CreateEvent(),
         '/map': (context) => const MapComponent(events: []),
         '/test': (context) => const MyTabbedPage(),
       },

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:atelier2_app_mobile/data/CurrentUser.dart';
 import 'package:dio/dio.dart';
 
 import 'User.dart';
@@ -28,7 +29,8 @@ class Event {
     address = "Nancy";
     location = "42.9407051776, 147.9463177216";
     authorId = -1;
-    dateEvent = DateTime.utc(1960);//DateTime.parse(DateTime.utc(1960).toString());
+    dateEvent =
+        DateTime.utc(1960); //DateTime.parse(DateTime.utc(1960).toString());
     updatedAt = DateTime.now();
   }
 
@@ -45,9 +47,10 @@ class Event {
     return e;
   }
 
-  setTitle(String newTitle){
+  setTitle(String newTitle) {
     title = newTitle;
   }
+
   double getLat() {
     print("loc : " + location);
     int endIndex = location.indexOf(",");
@@ -67,19 +70,20 @@ class Event {
   getOrganisateurName() {
     return "Jules";
   }
-  getTitle(){
-    print("return "+title);
+
+  getTitle() {
+    print("return " + title);
     return title;
   }
 
   @override
-  toString(){
-    return "'title': $title"+
-            "'address': $address,"+
-            "'localisation': $location,"+
-            "'date_events':  $dateEvent.toString().substring(0, dateEvent.toString().length-5)"+
-            "'user_id_user': $authorId"+
-            "";
+  toString() {
+    return "'title': $title" +
+        "'address': $address," +
+        "'localisation': $location," +
+        "'date_events':  $dateEvent.toString().substring(0, dateEvent.toString().length-5)" +
+        "'user_id_user': $authorId" +
+        "";
   }
 
   //TODO ajouter user à un èvent
@@ -89,7 +93,14 @@ class Event {
   /// TODO set author id
   /// @phorcys-jules
   createEvent() async {
-    print('saving event....'+ title+ address+ location+" "+ dateEvent.toString().substring(0, dateEvent.toString().length-5)+" "+updatedAt.toString());
+    print('saving event....' +
+        title +
+        address +
+        location +
+        " " +
+        dateEvent.toString().substring(0, dateEvent.toString().length - 5) +
+        " " +
+        updatedAt.toString());
     try {
       var response = await Dio()
           //true data
@@ -98,10 +109,17 @@ class Event {
             'title': title,
             'address': address,
             'localisation': location,
-            'date_events':  dateEvent.toString().substring(0, dateEvent.toString().length-5),
-            'user_id_user': 6
+            'date_events': dateEvent
+                .toString()
+                .substring(0, dateEvent.toString().length - 5),
+            'user_id_user': CurrentUser.usr.id
           });
-      print(response);
+      print(response.statusCode);
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
     } on DioError catch (e) {
       if (e.error.toString() == "Http status error [500]") {
         print("Les champs ne sont pas conformes");

@@ -62,8 +62,8 @@ class _ConnectState extends State<Connect> {
                         _formKey.currentState!.save();
                         print("mail : " + usr.mail + "pass " + usr.password);
                         //usr.howAreYou();
-                        usr.connect();
-                        //Navigator.pushNamed(context, '/');
+                        //usr.connect();
+                        Navigator.pushNamed(context, '/');
                       }
                     },
                     child: const Text("Connect"))

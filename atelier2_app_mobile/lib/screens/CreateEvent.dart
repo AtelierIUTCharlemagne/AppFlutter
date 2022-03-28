@@ -23,7 +23,6 @@ class _CreateEventState extends State<CreateEvent> {
   String mapBoxApiKey =
       'pk.eyJ1IjoicGhvcmN5cy1qdWxlcyIsImEiOiJja3k4bnU5cjUwMWk5MnZsYmp1am5pem04In0.LTlGjtYT-0MdURTgGk9fDA';
 
-
   @override
   Widget build(BuildContext context) {
     Event evt = Event();
@@ -54,7 +53,6 @@ class _CreateEventState extends State<CreateEvent> {
                     Form.of(primaryFocus!.context!)!.save();
                     Form.of(primaryFocus!.context!)!.validate();
                   } catch (e) {}
-
                 },
                 child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -120,11 +118,16 @@ class _CreateEventState extends State<CreateEvent> {
                       )),
                       const Padding(padding: EdgeInsets.only(top: 15.0)),
                       ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (widget.formKey.currentState!.validate()) {
                               // TODO message confirmation ?
-                              print("evt : "+ evt.toString());
-                              evt.createEvent();
+                              print("evt : " + evt.toString());
+                              if (await evt.createEvent()) {
+                                Navigator.pushReplacementNamed(
+                                    context, '/events');
+                                Navigator.pop(context);
+                              }
+
                               //Navigator.pushNamed(context, '/');
                             }
                           },

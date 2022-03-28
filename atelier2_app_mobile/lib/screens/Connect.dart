@@ -60,7 +60,6 @@ class _ConnectState extends State<Connect> {
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        print("mail : " + usr.mail + "pass " + usr.password);
                         if (await usr.connect()) {
                           Navigator.pushReplacementNamed(context, '/');
                           Navigator.pop(context);

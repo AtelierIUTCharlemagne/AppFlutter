@@ -10,6 +10,8 @@ import 'package:faker/faker.dart';
 
 import 'package:http/http.dart' as http;
 
+import 'CurrentUser.dart';
+
 //Liste des tâches pour le moment gènèré avec faker
 
 class EventsCollection extends ChangeNotifier {
@@ -59,8 +61,8 @@ class EventsCollection extends ChangeNotifier {
   }
 
   getMyEvents() async {
-    final response = await http
-        .get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62345/events'));
+    final response = await http.get(Uri.parse(
+        'http://docketu.iutnc.univ-lorraine.fr:62345/events?user_id=${CurrentUser.usr.id}'));
 
     if (response.statusCode == 200) {
       Events = EventsCollection.fromJson(jsonDecode(response.body)).Events;

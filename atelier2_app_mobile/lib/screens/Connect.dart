@@ -57,13 +57,14 @@ class _ConnectState extends State<Connect> {
                 ),
                 const Padding(padding: EdgeInsets.only(top: 15.0)),
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                         print("mail : " + usr.mail + "pass " + usr.password);
-                        //usr.howAreYou();
-                        //usr.connect();
-                        Navigator.pushNamed(context, '/');
+                        if (await usr.connect()) {
+                          Navigator.pushReplacementNamed(context, '/');
+                          Navigator.pop(context);
+                        }
                       }
                     },
                     child: const Text("Connect"))

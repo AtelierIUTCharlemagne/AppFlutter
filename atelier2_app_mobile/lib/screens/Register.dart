@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
               padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: FocusTraversalGroup(
                   child: Form(
-                autovalidateMode: AutovalidateMode.always,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 key: _formKey,
                 onChanged: () {
                   Form.of(primaryFocus!.context!)!.save();
@@ -113,7 +113,6 @@ class _RegisterState extends State<Register> {
                       ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // TODO regist user
                               _formKey.currentState!.save();
                               usr.register();
                               Navigator.pushNamed(context, '/');

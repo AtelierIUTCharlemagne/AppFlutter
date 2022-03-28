@@ -57,7 +57,8 @@ class EventsCollection extends ChangeNotifier {
 */
   void generateSampleEvents() {
     print('coucou');
-    Events = List<Event>.generate(3, (index) => Event(faker.lorem.sentence()));
+    Events = List<Event>.generate(3, (index) => Event());
+    //faker.lorem.sentence()
   }
 
   getMyEvents() async {

@@ -1,3 +1,4 @@
+import 'package:atelier2_app_mobile/screens/Connect.dart';
 import 'package:atelier2_app_mobile/screens/CreateEvent.dart';
 import 'package:atelier2_app_mobile/screens/MyEvents.dart';
 import 'package:atelier2_app_mobile/screens/OneEvent.dart';
@@ -23,13 +24,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ReunioNous',
-      initialRoute: '/',
+      initialRoute: '/connect',
       routes: {
         '/': (context) => const MyHomePage(),
-        '/events': (context) => MyEvents(events: EventsCollection().getList(),),
-        '/event': (context) => OneEvent(event: Event()),
+        '/events': (context) => MyEvents(
+              events: EventsCollection().getList(),
+            ),
+        '/event': (context) => OneEvent(
+              event: Event("Soirée place Stan"),
+            ),
         '/register': (context) => const Register(),
-        '/createEvent': (context) => CreateEvent(),
+        '/connect': (context) => const Connect(),
+        '/createEvent': (context) => const CreateEvent(),
         '/map': (context) => const MapComponent(events: []),
         '/test': (context) => const MyTabbedPage(),
       },
@@ -49,18 +55,17 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Reunionous"),
         actions: <Widget>[
-              IconButton(
-                icon: const Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-              )
-            ],
+          IconButton(
+            icon: const Icon(
+              Icons.account_circle_rounded,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, '/register');
+            },
+          )
+        ],
       ),
-      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -72,8 +77,7 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-            
-     bottomNavigationBar: const MyTabbedPage(),
+      bottomNavigationBar: const MyTabbedPage(),
     );
   }
 }

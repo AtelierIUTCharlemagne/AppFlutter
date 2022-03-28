@@ -2,6 +2,7 @@
 
 import 'package:atelier2_app_mobile/data/EventsCollection.dart';
 import 'package:atelier2_app_mobile/model/Event.dart';
+import 'package:atelier2_app_mobile/screens/OneEvent.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,24 +38,29 @@ class _EventPreviewState extends State<EventPreview> {
     }
     */
     return Consumer<EventsCollection>(builder: (context, events, child) {
-      return  Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  ListTile(
-                    title: Text(widget.event.title),
-                    subtitle: Text("Par : " +
-                        widget.event.authorId.toString() +
-                        "\n" +
-                        "à " +
-                        widget.event.address),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/event');
-                    },
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ListTile(
+              title: Text(widget.event.title),
+              subtitle: Text("Par : " +
+                  widget.event.authorId.toString() +
+                  "\n" +
+                  "à " +
+                  widget.event.address),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OneEvent(event: widget.event),
                   ),
-              ],
-              ),
-          );
+                );
+              },
+            ),
+          ],
+        ),
+      );
     });
   }
 }

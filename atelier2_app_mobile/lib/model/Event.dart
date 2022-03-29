@@ -104,16 +104,15 @@ class Event {
     try {
       var response = await Dio()
           //true data
-          .post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create',
-              data: {
-            'title': title,
-            'address': address,
-            'localisation': location,
-            'date_events': dateEvent
-                .toString()
-                .substring(0, dateEvent.toString().length - 5),
-            'user_id_user': CurrentUser.usr.id
-          });
+          //.post('http://docketu.iutnc.univ-lorraine.fr:62345/events/create',
+          .post('http://localhost:62345/events/create', data: {
+        'title': title,
+        'address': address,
+        'localisation': location,
+        'date_events':
+            dateEvent.toString().substring(0, dateEvent.toString().length - 5),
+        'user_id_user': CurrentUser.usr.id
+      });
       print(response.statusCode);
       if (response.statusCode == 201) {
         return true;

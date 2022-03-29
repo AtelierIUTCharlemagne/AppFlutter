@@ -48,7 +48,8 @@ class User {
     print("connection....");
     try {
       final response = await http.post(
-          Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62349/users/signin'),
+          Uri.parse('http://localhost:62349/users/signin'),
+          //Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62349/users/signin'),
           body: {'email': mail, 'passwd': password});
       if (response.statusCode == 200) {
         CurrentUser.fromJsonConnection(jsonDecode(response.body));

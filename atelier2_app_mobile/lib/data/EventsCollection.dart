@@ -63,7 +63,8 @@ class EventsCollection extends ChangeNotifier {
 
   getMyEvents() async {
     final response = await http.get(Uri.parse(
-        'http://docketu.iutnc.univ-lorraine.fr:62345/events?user_id=${CurrentUser.usr.id}'));
+        //'http://docketu.iutnc.univ-lorraine.fr:62345/events?user_id=${CurrentUser.usr.id}'));
+        'http://localhost:62345/events?user_id=${CurrentUser.usr.id}'));
 
     if (response.statusCode == 200) {
       Events = EventsCollection.fromJson(jsonDecode(response.body)).Events;

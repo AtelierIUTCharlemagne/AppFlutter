@@ -13,14 +13,12 @@ class OneEvent extends StatefulWidget {
   OneEvent({Key? key, required this.event}) : super(key: key);
 
   Event event;
- 
 
   @override
   State<OneEvent> createState() => _OneEventState();
 }
 
 class _OneEventState extends State<OneEvent> {
-
   getEventDatas() async {
     Event e = Event();
     try {
@@ -91,7 +89,8 @@ class _OneEventState extends State<OneEvent> {
                   leading: const Icon(Icons.location_pin),
                 ),
                 ListTile(
-                  title: Text(widget.event.dateEvent.toString()),
+                  title: Text(widget.event.dateEvent.toString().substring(
+                      0, widget.event.dateEvent.toString().length - 2)),
                   leading: const Icon(Icons.calendar_today_rounded),
                 ),
                 ListTile(

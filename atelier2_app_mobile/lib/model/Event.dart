@@ -15,6 +15,7 @@ class Event {
   late int id;
   late String token;
   late String title;
+  late String createur;
   late String address;
   late String location;
   late int authorId;
@@ -23,6 +24,7 @@ class Event {
 
   //Constructor
   Event() {
+    print("hey");
     title = "titre";
     id = -1;
     token = "-1";
@@ -37,6 +39,7 @@ class Event {
   factory Event.fromJson(Map<String, dynamic> json) {
     Event e = Event();
     e.title = json['title'];
+    e.createur = json['createur'];
     e.id = json['id_events'];
     e.address = json['address'];
     e.location = json['localisation'];
@@ -46,6 +49,8 @@ class Event {
     e.authorId = json['user_id_user'];
     return e;
   }
+
+  get event => null;
 
   setTitle(String newTitle) {
     title = newTitle;
@@ -64,11 +69,6 @@ class Event {
     String sy = location.substring(startIndex + 2, location.length);
     print("sy : " + sy);
     return double.parse(sy);
-  }
-
-  ///TODO
-  getOrganisateurName() {
-    return "Jules";
   }
 
   getTitle() {

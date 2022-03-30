@@ -27,47 +27,91 @@ class _ConnectState extends State<Connect> {
         child: Form(
           key: _formKey,
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    icon: Icon(Icons.email),
-                  ),
-                  onSaved: (String? value) => usr.mail = value!,
-                  validator: (String? value) {
-                    return (!isEmail(value!))
-                        ? 'This is not a valid email'
-                        : null;
-                  },
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  icon: Icon(Icons.email),
                 ),
-                TextFormField(
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.password_outlined),
-                    hintText: 'Keep it secret',
-                    labelText: 'Password *',
-                  ),
-                  onSaved: (String? value) => usr.password = value!,
-                  validator: (String? value) {
-                    return (!isPasswordValid(value!))
-                        ? 'This is not a valid Password'
-                        : null;
-                  },
+                onSaved: (String? value) => usr.mail = value!,
+                validator: (String? value) {
+                  return (!isEmail(value!))
+                      ? 'This is not a valid email'
+                      : null;
+                },
+              ),
+              TextFormField(
+                obscureText: true,
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.password_outlined),
+                  hintText: 'Keep it secret',
+                  labelText: 'Password *',
                 ),
-                const Padding(padding: EdgeInsets.only(top: 15.0)),
-                ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        if (await usr.connect()) {
-                          Navigator.pushReplacementNamed(context, '/');
-                          Navigator.pop(context);
+                onSaved: (String? value) => usr.password = value!,
+                validator: (String? value) {
+                  return (!isPasswordValid(value!))
+                      ? 'This is not a valid Password'
+                      : null;
+                },
+              ),
+              const Padding(padding: EdgeInsets.only(top: 15.0)),
+              /*
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        const Text(
+                          "You don't have an account yet ?",
+                          style: TextStyle(
+                            color: Colors.indigo,
+                          ),
+                        ),
+                        ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                if (await usr.connect()) {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/register');
+                                  Navigator.pop(context);
+                                }
+                              }
+                            },
+                            child: const Text("Register")),
+                      ],
+                    ),
+                    */
+              const Text(
+                "You don't have an account yet ?",
+                style: TextStyle(
+                  color: Colors.indigo,
+                ),
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/register');
+                      },
+                      child: const Text("Register")),
+                  const Padding(padding: EdgeInsets.only(right: 55.0)),
+                  ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          if (await usr.connect()) {
+                            Navigator.pushReplacementNamed(context, '/');
+                            Navigator.pop(context);
+                          }
                         }
-                      }
-                    },
-                    child: const Text("Connect"))
-              ]),
+                      },
+                      child: const Text("Connect")),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

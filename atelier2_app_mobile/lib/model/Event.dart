@@ -21,6 +21,8 @@ class Event {
   late int authorId;
   late DateTime dateEvent;
   late DateTime updatedAt;
+  late List comments;
+  late List participants;
 
   //Constructor
   Event() {
@@ -34,6 +36,7 @@ class Event {
     dateEvent =
         DateTime.utc(1960); //DateTime.parse(DateTime.utc(1960).toString());
     updatedAt = DateTime.now();
+    comments = [];
   }
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -93,8 +96,12 @@ class Event {
       var response = await Dio().post(
           //'http://docketu.iutnc.univ-lorraine.fr:62346/events/answer',
           'http://localhost:62346/events/answer',
-          data: {'present': true, 'user_id_user': CurrentUser.usr.id, 'token': token});
-          print("join success");
+          data: {
+            'present': true,
+            'user_id_user': CurrentUser.usr.id,
+            'token': token
+          });
+      print("join success");
     } catch (e) {
       print(e);
     }

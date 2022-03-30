@@ -1,22 +1,23 @@
 // ignore_for_file: file_names
-
 import 'package:dio/dio.dart';
 import 'package:faker/faker.dart';
 
 class Comment {
-  String content;
+  String text;
   String authorID;
-  late bool completed;
   late DateTime lastConnected;
 
   //Constructor
-  Comment(this.content, this.authorID) {
-    completed = false;
+  Comment(this.text, this.authorID) {
     lastConnected = DateTime.now();
   }
-
-  static sampleComments(){
-    return List<Comment>.generate(10, (index) => Comment(faker.lorem.sentence(), faker.lorem.word()));
+  factory Comment.fromJson(Map<String, dynamic> json) {
+    Comment c = Comment(json['text'], json['author_id']);
+    return c;
   }
 
+  static sampleComments() {
+    return List<Comment>.generate(
+        10, (index) => Comment(faker.lorem.sentence(), faker.lorem.word()));
+  }
 }

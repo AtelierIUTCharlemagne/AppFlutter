@@ -17,6 +17,7 @@ class OneComment extends StatefulWidget {
 class _OneCommentState extends State<OneComment> {
   @override
   Widget build(BuildContext context) {
+    print("comment : " + widget.comment.toString());
     //return Consumer<EventsCollection>(builder: (context, events, child) {
     return Container(
         width: MediaQuery.of(context).size.width,
@@ -51,7 +52,8 @@ class _OneCommentState extends State<OneComment> {
                   ),
                   Expanded(
                       child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,

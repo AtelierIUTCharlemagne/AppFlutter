@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:atelier2_app_mobile/model/User.dart';
 import 'package:flutter/material.dart';
 
 class MyTabbedPage extends StatefulWidget {
@@ -16,6 +17,10 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
     });
     switch (index) {
       case 0:
+        ///tpm remove in prod
+        User u = User("","","");
+        u.connectDefault();
+        
         Navigator.pushNamed(context, '/events');
         break;
       case 1:

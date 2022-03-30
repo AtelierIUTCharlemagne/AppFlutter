@@ -90,4 +90,24 @@ class User {
       print(e);
     }
   }
+
+
+  ///DEBUG TOOL faster dev
+    connectDefault() async {
+    print("connection....");
+    try {
+      final response = await http.post(
+          Uri.parse('http://localhost:62349/users/signin'),
+          //Uri.parse('http://docketu.iutnc.univ-lorraine.fr:62349/users/signin'),
+          body: {'email': 'jul@mail.fr', 'passwd': 'Jules2'});
+      if (response.statusCode == 200) {
+        CurrentUser.fromJsonConnection(jsonDecode(response.body));
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
 }

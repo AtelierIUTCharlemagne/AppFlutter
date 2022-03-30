@@ -24,14 +24,12 @@ class OneEvent extends StatefulWidget {
             },
           ));
       if (response.statusCode == 200) {
-        print('aaah');
+        print('decoding...');
         print(response.data);
         
-        event = Event.fromJson(response.data);
+        event = Event.fromJsonComment(response.data);
 
-        print('aaaaaaaaaaaaah');
-        event.comments = CommentCollection.fromJson(
-            json.decode(response.data.event['comments'])) as List;
+        print('decoded');
         print('EVENT COMMENTS');
         print(event.comments);
         // response.data.event['comments'];

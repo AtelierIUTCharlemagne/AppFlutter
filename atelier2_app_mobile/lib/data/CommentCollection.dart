@@ -17,9 +17,10 @@ class CommentCollection extends ChangeNotifier {
 
   ///Turn a JSON collection of Comments to an Comments List
   ///@return CommentCollection
-  factory CommentCollection.fromJson(Map<String, dynamic> json) {
+  factory CommentCollection.fromJson(List<dynamic> json) {
+    print("we tring to create a comment collection from json");
     CommentCollection e = CommentCollection();
-    json['Comments'].forEach((item) {
+    json.forEach((item) {
       e.Comments.add(Comment.fromJson(item));
     });
     return e;

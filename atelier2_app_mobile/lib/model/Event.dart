@@ -1,6 +1,9 @@
 import 'dart:io';
 
+import 'package:atelier2_app_mobile/data/CommentCollection.dart';
 import 'package:atelier2_app_mobile/data/CurrentUser.dart';
+import 'package:atelier2_app_mobile/data/EventsCollection.dart';
+import 'package:atelier2_app_mobile/model/Comment.dart';
 import 'package:dio/dio.dart';
 
 import 'User.dart';
@@ -21,7 +24,7 @@ class Event {
   late int authorId;
   late DateTime dateEvent;
   late DateTime updatedAt;
-  late List comments;
+  late CommentCollection comments;
   late List participants;
 
   //Constructor
@@ -36,7 +39,7 @@ class Event {
     dateEvent =
         DateTime.utc(1960); //DateTime.parse(DateTime.utc(1960).toString());
     updatedAt = DateTime.now();
-    comments = [];
+    comments = CommentCollection();
   }
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -53,6 +56,27 @@ class Event {
     return e;
   }
 
+    factory Event.fromJsonComment(Map<String, dynamic> json) {
+    print("we tried to create event with comment from json");
+    //print("title ? "+ json['title']+"..."+ json['event']['title']);
+    print("title ? "+ json['event']['title']);
+
+    Event e = Event();
+    e.title = json['event']['title'];
+    e.createur = json['event']['createur'];
+    e.id = json['event']['id_events'];
+    e.address = json['event']['address'];
+    e.location = json['event']['localisation'];
+    e.token = json['event']['token'];
+    e.dateEvent = DateTime.parse(json['event']['date_events']);
+    e.updatedAt = DateTime.parse(json['event']['last_update']);
+    e.authorId = json['user_id_user'];
+    print("the event is created, we're adding comments : ");
+    e.comments = CommentCollection.fromJson(json['comments']);
+    print("so we created event with comment : " + e.toString());
+    return e;
+  }
+
   get event => null;
 
   setTitle(String newTitle) {
@@ -60,10 +84,8 @@ class Event {
   }
 
   double getLat() {
-    print("loc : " + location);
     int endIndex = location.indexOf(",");
     String sx = location.substring(0, endIndex);
-    print("sx : " + sx);
     return double.parse(sx);
   }
 

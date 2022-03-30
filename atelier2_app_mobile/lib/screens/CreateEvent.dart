@@ -92,10 +92,9 @@ class _CreateEventState extends State<CreateEvent> {
                         validator: (e) => (e?.day ?? 0) == 1
                             ? 'This is not a valid date for an event'
                             : null,
-                        onSaved: (DateTime? value) {
-                          //print("date : "+value.toString());
+                        onDateSelected: (DateTime? value) {
+                          print("date : " + value.toString());
                           evt.dateEvent = value!;
-                          print(value);
                         },
                       ),
 

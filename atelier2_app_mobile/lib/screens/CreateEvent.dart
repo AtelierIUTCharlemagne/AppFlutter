@@ -95,6 +95,7 @@ class _CreateEventState extends State<CreateEvent> {
                         onSaved: (DateTime? value) {
                           //print("date : "+value.toString());
                           evt.dateEvent = value!;
+                          print(value);
                         },
                       ),
 
@@ -110,9 +111,9 @@ class _CreateEventState extends State<CreateEvent> {
                           print("ici : " + place.toString());
                           print("center :: " + place.center.toString());
                           evt.address = place.toString();
-                          evt.location = place.center[0].toString() +
+                          evt.location = place.center[1].toString() +
                               ", " +
-                              place.center[1].toString();
+                              place.center[0].toString();
                         },
                         context: context,
                       )),

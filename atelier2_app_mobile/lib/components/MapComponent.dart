@@ -9,9 +9,9 @@ import "package:latlong2/latlong.dart" as lt;
 
 // ignore: must_be_immutable
 class MapComponent extends StatefulWidget {
-  const MapComponent({Key? key, required this.events}) : super(key: key);
+  const MapComponent({Key? key, required this.event}) : super(key: key);
 
-  final List<Event> events;
+  final Event event;
   
   @override
   State<MapComponent> createState() => _MapComponentState();
@@ -23,23 +23,20 @@ class _MapComponentState extends State<MapComponent> {
   Widget build(BuildContext context) {
     List<Marker> mark = [];
 
-      ///on stocke widget.events dans une variable temporaire pour bien lui faire
-      ///comprendre que la valeur n'est pas nul, cf if au dessus
-      List<Event> tmp = widget.events;
-      for (var event in tmp) {
-        print("ma boy");
+
         mark.add(Marker(
           width: 80.0,
           height: 80.0,
-          point: lt.LatLng(event.getLat(), event.getLong()),
+          //point: lt.LatLng(widget.event.getLat(), widget.event.getLong()),
+          point: lt.LatLng(0,0),
           builder: (ctx) =>
               const Icon(Icons.location_pin, color: Colors.indigoAccent),
         ));
-    }
 
     return FlutterMap(
       options: MapOptions(
-        center: lt.LatLng(51.5, -0.09),
+        //center: lt.LatLng(widget.event.getLat(), widget.event.getLong()),
+        center: lt.LatLng(0,0),
         zoom: 14.0,
       ),
       layers: [

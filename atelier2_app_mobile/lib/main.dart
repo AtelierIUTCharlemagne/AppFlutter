@@ -1,5 +1,6 @@
 import 'package:atelier2_app_mobile/screens/Connect.dart';
 import 'package:atelier2_app_mobile/screens/CreateEvent.dart';
+import 'package:atelier2_app_mobile/screens/Join.dart';
 import 'package:atelier2_app_mobile/screens/MyEvents.dart';
 import 'package:atelier2_app_mobile/screens/OneEvent.dart';
 import 'package:atelier2_app_mobile/screens/Profile.dart';
@@ -28,13 +29,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/connect',
       routes: {
         '/': (context) => const MyHomePage(),
-        '/events': (context) => MyEvents(
-              events: EventsCollection().getList(),
-            ),
-        '/event': (context) => OneEvent(
-              event: Event(),
-            ),
+        '/events': (context) => MyEvents(events: EventsCollection().getList()),
+        '/event': (context) => OneEvent(event: Event()),
         '/register': (context) => const Register(),
+        '/join': (context) => const Join(),
         '/profile': (context) => const Profile(),
         '/connect': (context) => const Connect(),
         '/createEvent': (context) => CreateEvent(),

@@ -45,7 +45,7 @@ class _EventPreviewState extends State<EventPreview> {
             ListTile(
               title: Text(widget.event.title),
               subtitle: Text("Par : " +
-                  widget.event.authorId.toString() +
+                  widget.event.createur.toString() +
                   "\n" +
                   "à " +
                   widget.event.address),

@@ -1,14 +1,18 @@
 // ignore: file_names
+import 'dart:convert';
+
 import 'package:atelier2_app_mobile/components/AllComments.dart';
 import 'package:atelier2_app_mobile/components/MapComponent.dart';
+import 'package:atelier2_app_mobile/data/CommentCollection.dart';
+import 'package:atelier2_app_mobile/model/Comment.dart';
 import 'package:atelier2_app_mobile/model/Event.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class OneEvent extends StatefulWidget {
-  const OneEvent({Key? key, required this.event}) : super(key: key);
+  OneEvent({Key? key, required this.event}) : super(key: key);
 
-  final Event event;
+  Event event;
   getEventDatas() async {
     try {
       var response = await Dio().get(
@@ -20,15 +24,17 @@ class OneEvent extends StatefulWidget {
             },
           ));
       if (response.statusCode == 200) {
+        print('aaah');
         print(response.data);
-        event.title = response.data.event['title'];
-        event.createur = response.data.event['createur'];
-        event.address = response.data.event['address'];
-        event.location = response.data.event['location'];
-        event.token = response.data.event['token'];
-        event.dateEvent = response.data.event['dateEvent'];
-        event.updatedAt = response.data.event['updatedAt'];
-        event.authorId = response.data.event['authorId'];
+        
+        event = Event.fromJson(response.data);
+
+        print('aaaaaaaaaaaaah');
+        event.comments = CommentCollection.fromJson(
+            json.decode(response.data.event['comments'])) as List;
+        print('EVENT COMMENTS');
+        print(event.comments);
+        // response.data.event['comments'];
       }
     } catch (e) {
       print(e);
@@ -42,6 +48,7 @@ class OneEvent extends StatefulWidget {
 class _OneEventState extends State<OneEvent> {
   @override
   Widget build(BuildContext context) {
+    print(widget.event.comments);
     double width = MediaQuery.of(context).size.width;
     double bottomPadding = MediaQuery.of(context).padding.bottom;
     widget.getEventDatas();
@@ -98,7 +105,8 @@ class _OneEventState extends State<OneEvent> {
                   height: 400,
                   child: Column(
                     children: [
-                      Expanded(child: AllComments(eventId: widget.event.id))
+                      Expanded(
+                          child: AllComments(comments: widget.event.comments))
                     ],
                   ),
                 )

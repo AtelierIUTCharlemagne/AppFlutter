@@ -22,7 +22,7 @@ class _JoinState extends State<Join> {
 
     return AlertDialog(
       scrollable: true,
-      title: const Text('Login'),
+      title: const Text('Jeton d\'invitation'),
       content: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(

@@ -19,7 +19,6 @@ class _MyEventsState extends State<MyEvents> {
   @override
   Widget build(BuildContext context) {
     return Consumer<EventsCollection>(builder: (context, events, child) {
-      //TODO remove this.events from constructor parameters because we redifine here :
       events.getMyEvents();
       return Scaffold(
           appBar: AppBar(

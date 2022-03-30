@@ -40,6 +40,7 @@ class Event {
         DateTime.utc(1960); //DateTime.parse(DateTime.utc(1960).toString());
     updatedAt = DateTime.now();
     comments = CommentCollection();
+    createur = "tmp";
   }
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -53,13 +54,15 @@ class Event {
     e.dateEvent = DateTime.parse(json['date_events']);
     e.updatedAt = DateTime.parse(json['last_update']);
     e.authorId = json['user_id_user'];
+    e.createur = "tmp";
+    //e.createur =  json['createur'];
     return e;
   }
 
-    factory Event.fromJsonComment(Map<String, dynamic> json) {
+  factory Event.fromJsonComment(Map<String, dynamic> json) {
     print("we tried to create event with comment from json");
     //print("title ? "+ json['title']+"..."+ json['event']['title']);
-    print("title ? "+ json['event']['title']);
+    print("title ? " + json['event']['title']);
 
     Event e = Event();
     e.title = json['event']['title'];
@@ -81,6 +84,39 @@ class Event {
 
   setTitle(String newTitle) {
     title = newTitle;
+  }
+
+  Event awaitEventDatas() {
+    Event e = Event();
+    print("get event datas"+getEventDatas().toString());
+    getEventDatas().then((value) => e = value);
+    print("get event e"+e.toString());
+
+    return e;
+  }
+
+  Future<Event> getEventDatas() async {
+    Event e = Event();
+    try {
+      var response = await Dio().get(
+          //'http://docketu.iutnc.univ-lorraine.fr:62349/users/signup',
+          'http://localhost:62345/events/${event.id}?embed=all',
+          options: Options(
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          ));
+      if (response.statusCode == 200) {
+        print(response.data);
+        e = Event.fromJsonComment(response.data);
+        print('decoded');
+        print('EVENT COMMENTS');
+        print(event.comments);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return e;
   }
 
   double getLat() {
@@ -108,6 +144,7 @@ class Event {
         "'localisation': $location," +
         "'date_events':  $dateEvent.toString().substring(0, dateEvent.toString().length-5)" +
         "'user_id_user': $authorId" +
+        "'nb comment': ${comments.Comments.length}" +
         "";
   }
 

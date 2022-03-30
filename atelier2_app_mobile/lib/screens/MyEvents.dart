@@ -27,8 +27,9 @@ class _MyEventsState extends State<MyEvents> {
           body: Center(
               child: ListView.builder(
             itemCount: events.Events.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (context, index)  {
               final event = events.Events[index];
+              //return EventPreview(event: event.awaitEventDatas());
               return EventPreview(event: event);
             },
           )),

@@ -13,43 +13,42 @@ class OneEvent extends StatefulWidget {
   OneEvent({Key? key, required this.event}) : super(key: key);
 
   Event event;
-  getEventDatas() async {
-    try {
-      var response = await Dio().get(
-          //'http://docketu.iutnc.univ-lorraine.fr:62349/users/signup',
-          'http://localhost:62345/events/${event.id}?embed=all',
-          options: Options(
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          ));
-      if (response.statusCode == 200) {
-        print('decoding...');
-        print(response.data);
-        
-        event = Event.fromJsonComment(response.data);
-
-        print('decoded');
-        print('EVENT COMMENTS');
-        print(event.comments);
-        // response.data.event['comments'];
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+ 
 
   @override
   State<OneEvent> createState() => _OneEventState();
 }
 
 class _OneEventState extends State<OneEvent> {
+
+  getEventDatas() async {
+    Event e = Event();
+    try {
+      var response = await Dio().get(
+          //'http://docketu.iutnc.univ-lorraine.fr:62349/users/signup',
+          'http://localhost:62345/events/${widget.event.id}?embed=all',
+          options: Options(
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          ));
+      if (response.statusCode == 200) {
+        print(response.data);
+        e = Event.fromJsonComment(response.data);
+        print('decoded');
+        print('EVENT COMMENTS');
+        print(widget.event.comments);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return e;
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(widget.event.comments);
-    double width = MediaQuery.of(context).size.width;
-    double bottomPadding = MediaQuery.of(context).padding.bottom;
-    widget.getEventDatas();
+    print("one event : " + widget.event.toString());
+    getEventDatas();
 
     List<Event> evtList = [];
     evtList.add(widget.event);

@@ -26,6 +26,11 @@ class CommentCollection extends ChangeNotifier {
     return e;
   }
 
+  @override
+  String toString() {
+    return super.toString() + " with : " + Comments.length.toString()+ "items";
+  }
+
 
 
 }

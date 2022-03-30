@@ -16,31 +16,28 @@ class MyEvents extends StatefulWidget {
 }
 
 class _MyEventsState extends State<MyEvents> {
-    
-   
   @override
   Widget build(BuildContext context) {
-
-    return Consumer<EventsCollection>(builder: (context, events, child){
+    return Consumer<EventsCollection>(builder: (context, events, child) {
       //TODO remove this.events from constructor parameters because we redifine here :
       events.getMyEvents();
       return Scaffold(
-        appBar: AppBar(
-          title: const Text('Mes évènements'),
-        ),
-        body: Center(
-          child: ListView.builder(itemCount : events.Events.length,
-                itemBuilder : (context, index) {
-                  final event = events.Events[index];
-                  return EventPreview(event: event); 
-                },
-              )
-            ),
-            floatingActionButton: FloatingActionButton(
+          appBar: AppBar(
+            title: const Text('Mes évènements'),
+          ),
+          body: Center(
+              child: ListView.builder(
+            itemCount: events.Events.length,
+            itemBuilder: (context, index) {
+              final event = events.Events[index];
+              return EventPreview(event: event);
+            },
+          )),
+          floatingActionButton: FloatingActionButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/createEvent');
               },
-              child: const Icon(Icons.add))
-        );});
-    }
+              child: const Icon(Icons.add)));
+    });
   }
+}

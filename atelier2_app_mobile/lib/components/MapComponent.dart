@@ -22,6 +22,8 @@ class _MapComponentState extends State<MapComponent> {
   @override
   Widget build(BuildContext context) {
     List<Marker> mark = [];
+    double x =0;
+    double y = 0;
 
       ///on stocke widget.events dans une variable temporaire pour bien lui faire
       ///comprendre que la valeur n'est pas nul, cf if au dessus
@@ -35,11 +37,13 @@ class _MapComponentState extends State<MapComponent> {
           builder: (ctx) =>
               const Icon(Icons.location_pin, color: Colors.indigoAccent),
         ));
+        x = event.getLat(); 
+        y = event.getLong();
     }
 
     return FlutterMap(
       options: MapOptions(
-        center: lt.LatLng(51.5, -0.09),
+        center: lt.LatLng(x, y),
         zoom: 14.0,
       ),
       layers: [

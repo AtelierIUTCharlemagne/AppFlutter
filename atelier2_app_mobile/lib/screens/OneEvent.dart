@@ -46,6 +46,9 @@ class _OneEventState extends State<OneEvent> {
     double bottomPadding = MediaQuery.of(context).padding.bottom;
     widget.getEventDatas();
 
+    List<Event> evtList = [];
+    evtList.add(widget.event);
+    print("evt : " + evtList.toString());
     return Scaffold(
         //TODO test if we can remove app Bar here (necessary ?)
         appBar: AppBar(
@@ -72,7 +75,7 @@ class _OneEventState extends State<OneEvent> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          //Expanded(child: MapComponent(event: widget.event)),
+                          Expanded(child: MapComponent(events: evtList)),
                           const SizedBox(height: 18),
                         ])),
                 ListTile(

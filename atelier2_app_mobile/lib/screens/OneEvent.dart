@@ -39,7 +39,7 @@ class _OneEventState extends State<OneEvent> {
                 color: Colors.white,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/register');
+                Navigator.pushNamed(context, '/profile');
               },
             )
           ],

@@ -2,6 +2,7 @@ import 'package:atelier2_app_mobile/screens/Connect.dart';
 import 'package:atelier2_app_mobile/screens/CreateEvent.dart';
 import 'package:atelier2_app_mobile/screens/MyEvents.dart';
 import 'package:atelier2_app_mobile/screens/OneEvent.dart';
+import 'package:atelier2_app_mobile/screens/Profile.dart';
 import 'package:atelier2_app_mobile/screens/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
               event: Event(),
             ),
         '/register': (context) => const Register(),
+        '/profile': (context) => const Profile(),
         '/connect': (context) => const Connect(),
         '/createEvent': (context) => CreateEvent(),
         '/map': (context) => const MapComponent(events: []),
@@ -61,7 +63,7 @@ class MyHomePage extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, '/register');
+              Navigator.pushNamed(context, '/profile');
             },
           )
         ],

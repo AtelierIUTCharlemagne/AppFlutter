@@ -37,7 +37,7 @@ class _CreateEventState extends State<CreateEvent> {
                 color: Colors.white,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/Register');
+                Navigator.pushNamed(context, '/profile');
               },
             )
           ],

@@ -1,17 +1,18 @@
+import 'package:atelier2_app_mobile/data/CurrentUser.dart';
 import 'package:atelier2_app_mobile/model/User.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:validators/validators.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _RegisterState extends State<Register> {
+class _ProfileState extends State<Profile> {
   bool isPasswordValid(String password) => password.length >= 6;
 
   @override
@@ -21,7 +22,7 @@ class _RegisterState extends State<Register> {
 
       return Scaffold(
           appBar: AppBar(
-            title: const Text("Reunionous"),
+            title: const Text("Mon profile"),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(
@@ -29,7 +30,7 @@ class _RegisterState extends State<Register> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/profile');
+                  Navigator.pushNamed(context, '/Profile');
                 },
               )
             ],
@@ -50,10 +51,10 @@ class _RegisterState extends State<Register> {
                     children: [
                       //Nom
                       TextFormField(
-                        decoration: const InputDecoration(
+                        initialValue: CurrentUser.usr.name,
+                        decoration: const  InputDecoration(
                           icon: Icon(Icons.person_outlined),
-                          hintText: 'What do people call you ?',
-                          labelText: 'Name *',
+                          labelText: 'Name',
                         ),
                         validator: (String? value) {
                           return (value != null &&
@@ -66,9 +67,9 @@ class _RegisterState extends State<Register> {
                       ),
                       //Mail
                       TextFormField(
+                        initialValue: CurrentUser.usr.mail,
                         decoration: const InputDecoration(
                           icon: Icon(Icons.mail_outlined),
-                          hintText: 'How we contact you ?',
                           labelText: 'Mail *',
                         ),
                         // Vérif si le mail exit déja ?
@@ -110,15 +111,17 @@ class _RegisterState extends State<Register> {
                         },
                       ),
                       const Padding(padding: EdgeInsets.only(top: 15.0)),
+                      //tmp
+                      Text("id : ${CurrentUser.usr.id}"),
                       ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
-                              usr.register();
+                              usr.update();
                               Navigator.pushNamed(context, '/');
                             }
                           },
-                          child: const Text("Register"))
+                          child: const Text("Confirm changes"))
                     ]),
               )))
               );}

@@ -37,12 +37,12 @@ class User {
           //'http://docketu.iutnc.univ-lorraine.fr:62349/users/signup',
           'http://localhost:62349/users/signup',
           data: {'username': name, 'email': mail, 'passwd': password});
-          //User u = User(name, mail, password);
-          //current user = u;
-          //pb /signup ne rtourne pas l'id de l'user
-          
-          //connect va aller set le current user
-          connect();
+      //User u = User(name, mail, password);
+      //current user = u;
+      //pb /signup ne rtourne pas l'id de l'user
+
+      //connect va aller set le current user
+      connect();
 
       print(response);
     } catch (e) {
@@ -67,6 +67,27 @@ class User {
       }
     } catch (e) {
       return false;
+    }
+  }
+
+  /// Call our api to update mail, name & password
+  /// @phorcys-jules
+  update() async {
+    try {
+      var response = await Dio().patch(
+          //'http://docketu.iutnc.univ-lorraine.fr:62349/users/update',
+          'http://localhost:62349/users/update',
+          data: {'username': name, 'email': mail, 'passwd': password, 'id': CurrentUser.usr.id});
+      //User u = User(name, mail, password);
+      //current user = u;
+      //pb /update ne rtourne pas l'id de l'user
+
+      //connect va aller set le current user
+      connect();
+
+      print(response);
+    } catch (e) {
+      print(e);
     }
   }
 }

@@ -55,7 +55,7 @@ class Event {
     e.updatedAt = DateTime.parse(json['last_update']);
     e.authorId = json['user_id_user'];
     e.createur = "tmp";
-    //e.createur =  json['createur'];
+    e.createur = json['createur'];
     return e;
   }
 
@@ -88,9 +88,9 @@ class Event {
 
   Event awaitEventDatas() {
     Event e = Event();
-    print("get event datas"+getEventDatas().toString());
+    print("get event datas" + getEventDatas().toString());
     getEventDatas().then((value) => e = value);
-    print("get event e"+e.toString());
+    print("get event e" + e.toString());
 
     return e;
   }

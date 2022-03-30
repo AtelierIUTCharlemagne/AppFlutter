@@ -86,11 +86,21 @@ class Event {
         "";
   }
 
-  //TODO ajouter user à un èvent
-  join(User u1) {}
+  /// Call our api to join an event
+  /// @phorcys-jules
+  join() async {
+    try {
+      var response = await Dio().post(
+          //'http://docketu.iutnc.univ-lorraine.fr:62346/events/answer',
+          'http://localhost:62346/events/answer',
+          data: {'present': true, 'user_id_user': CurrentUser.usr.id, 'token': token});
+          print("join success");
+    } catch (e) {
+      print(e);
+    }
+  }
 
   /// Call our api to create the event in db
-  /// TODO set author id
   /// @phorcys-jules
   createEvent() async {
     print('saving event....' +

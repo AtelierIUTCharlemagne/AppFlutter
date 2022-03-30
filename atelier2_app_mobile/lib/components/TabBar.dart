@@ -19,7 +19,7 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
         Navigator.pushNamed(context, '/events');
         break;
       case 1:
-        Navigator.pushNamed(context, '/map');
+        Navigator.pushNamed(context, '/join');
         break;
       case 2:
         Navigator.pushNamed(context, '/connect');
@@ -37,8 +37,8 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
           label: 'My Events',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.map_outlined),
-          label: 'Map',
+          icon: Icon(Icons.group_add_rounded),
+          label: 'Rejoindre un événement',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.visibility_outlined),

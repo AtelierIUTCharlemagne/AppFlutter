@@ -18,8 +18,8 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
     switch (index) {
       case 0:
         ///tpm remove in prod
-        User u = User("","","");
-        u.connectDefault();
+        //User u = User("","","");
+        //u.connectDefault();
         
         Navigator.pushNamed(context, '/events');
         break;

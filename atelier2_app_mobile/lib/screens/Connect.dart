@@ -96,7 +96,7 @@ class _ConnectState extends State<Connect> {
                         Navigator.pushReplacementNamed(context, '/register');
                       },
                       child: const Text("Register")),
-                  const Padding(padding: EdgeInsets.only(right: 55.0)),
+                  const Padding(padding: EdgeInsets.only(right: 35.0)),
                   ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {

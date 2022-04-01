@@ -29,7 +29,7 @@ class _CreateEventState extends State<CreateEvent> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Reunionous"),
+          title: const Text("Reunionou"),
           actions: <Widget>[
             IconButton(
               icon: const Icon(

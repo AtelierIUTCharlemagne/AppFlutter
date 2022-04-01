@@ -9,9 +9,9 @@ class CommentCollection extends ChangeNotifier {
   late List<Comment> Comments;
   bool refreshed = false;
   CommentCollection() {
-    Comments = [];
+    //Utilisation commentaire d'exemple : 
+    Comments = Comment.sampleComments();
     //Comments = getMyComments();
-    //generateSampleComments();
   }
 
 

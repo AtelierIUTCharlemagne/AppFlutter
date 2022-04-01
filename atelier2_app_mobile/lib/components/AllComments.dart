@@ -18,16 +18,16 @@ class _AllCommentsState extends State<AllComments> {
   Widget build(BuildContext context) {
     print("ALL COMMENTS");
     print(widget.comments.toString());
-    //Consumer de comment TODO
-    //return Row(children: <Widget>[
-    //Expanded(
-    //child:
+    //Consumer de comment TODO ?
+
+
     return ListView.builder(
         primary: false,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.comments.Comments.length,
         itemBuilder: (context, index) {
           final comment = widget.comments.Comments[index];
+          //final comment = cmts[index];
           return OneComment(comment: comment);
         });
   }
